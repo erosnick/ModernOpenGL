@@ -1,0 +1,18 @@
+#version 460 core
+
+layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+// 1D float array
+layout (r32f, binding = 0) uniform image2D outTexture;
+
+void main()
+{
+    // Get position to read/write data from
+    ivec2 position = ivec2(gl_GlobalInvocationID.xy);
+
+    // Get value stored in the image
+    float value = imageLoad(outTexture, position).r;
+
+    // Store new value in image
+    imageStore(outTexture, position, vec4(value + 1.0, 0.0, 0.0, 0.0));
+}

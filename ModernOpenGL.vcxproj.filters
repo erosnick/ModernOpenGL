@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\ThirdParty">
+      <UniqueIdentifier>{7f5eaee0-8519-4dd2-87dd-089dc55a0ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ThirdParty">
+      <UniqueIdentifier>{1b4d63ca-3bec-497c-b62f-2e5398d95660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ThirdParty\imgui">
+      <UniqueIdentifier>{9e9028d8-5d8f-49e2-bf53-8f95138eac62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ThirdParty\imgui">
+      <UniqueIdentifier>{c7b626cc-ec98-41c0-bf48-58b7a3714b13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui_demo.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui_draw.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui_impl_glfw.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui_impl_opengl3.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui_tables.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\ImGui\imgui\imgui_widgets.cpp">
+      <Filter>源文件\ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utils\GeometryGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utils\glDebug.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ComputeShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Thirdparty\GLAD\glad.c">
+      <Filter>源文件\ThirdParty</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imconfig.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imgui.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imgui_impl_glfw.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imgui_impl_opengl3.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imgui_internal.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imstb_rectpack.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imstb_textedit.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Thirdparty\ImGui\imgui\imstb_truetype.h">
+      <Filter>头文件\ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\root_directory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\GeometryGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\glDebug.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ComputeShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
