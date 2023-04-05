@@ -1,9 +1,9 @@
 #version 460 core
 
-out vec4 FragColor;
+layout(location = 0) out vec4 FragColor;
 
-uniform ivec2 resolution;
-uniform float time;
+layout(location = 0) uniform ivec2 resolution;
+layout(location = 1) uniform float time;
 
 const float Min = 0.0;
 const float Max = 1000.0;

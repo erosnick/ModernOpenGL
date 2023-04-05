@@ -1,9 +1,11 @@
-#version 330 core
-in vec2 TexCoords;
-out vec4 color;
+#version 460 core
 
-uniform sampler2D text;
-uniform vec3 textColor;
+layout(location = 0) in vec2 TexCoords;
+
+layout(location = 0) out vec4 color;
+
+layout(location = 1) uniform sampler2D text;
+layout(location = 2) uniform vec3 textColor;
 
 void main()
 {    

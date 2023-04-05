@@ -9,12 +9,12 @@ layout (location = 0) in VSOut
   vec2 uv;
 } fsIn;
 
-out vec4 FragColor;
+layout(location = 0) out vec4 FragColor;
 
-uniform sampler2D albedoTexture;
+layout(location = 3) uniform sampler2D albedoTexture;
 
-uniform bool useTexture;
-uniform bool renderDepth;
+layout(location = 4) uniform bool useTexture;
+layout(location = 5) uniform bool renderDepth;
 
 void main()
 {

@@ -2,11 +2,11 @@
 
 precision highp float;
 
-out vec4 FragColor;
+layout(location = 0) out vec4 FragColor;
 
-uniform ivec2 resolution;
+layout(location = 2) uniform ivec2 resolution;
 
-uniform float time;
+layout(location = 3)uniform float time;
 
 const int MAX_STEPS = 100;
 

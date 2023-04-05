@@ -8,9 +8,11 @@ precision highp float;
 #define SOLUTION_FRESNEL
 // #define SOLUTION_BOOLEAN
 
-out vec4 FragColor;
+layout(location = 0) out vec4 FragColor;
 
-uniform ivec2 viewport;
+layout(location = 2) uniform ivec2 viewport;
+
+layout(location = 3) uniform float time;
 
 struct PointLight
 {
@@ -411,8 +413,6 @@ HitInfo intersectBoolean(const Ray ray, const Boolean boolean, const float tMin,
 #endif
     return getEmptyHit();
 }
-
-uniform float time;
 
 HitInfo getBetterHitInfo(const HitInfo oldHitInfo, const HitInfo newHitInfo) 
 {
