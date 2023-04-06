@@ -8,9 +8,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <imgui/imgui.h>
-#include <imgui/imgui_impl_glfw.h>
-#include <imgui/imgui_impl_opengl3.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
 
 #include <Utils/GeometryGenerator.h>
 
@@ -146,10 +145,10 @@ public:
 	void processMouseScroll(float yOffset);
 
 private:
-
-	const std::string SHADER_BASE = "./Assets/Shaders/";
-	const std::string MODEL_BASE = "./Assets/Models/";
-	const std::string TEXTURE_BASE = "./Assets/Textures/";
+	const std::string FONT_BASE = "../Assets/Fonts/";
+	const std::string SHADER_BASE = "../Assets/Shaders/";
+	const std::string MODEL_BASE = "../Assets/Models/";
+	const std::string TEXTURE_BASE = "../Assets/Textures/";
 
 	std::map<int32, Character> characters;
 	std::map<int32, Character> unicodeCharacters;

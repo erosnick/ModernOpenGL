@@ -41,3 +41,4 @@
 *.app
 
 x64/
+Project/.vs/

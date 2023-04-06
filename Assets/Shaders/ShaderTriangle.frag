@@ -1,5 +1,7 @@
 #version 460 core
 
+#include "Test.glsl"
+
 // layout(location = 0) in vec3 normal;
 // layout(location = 1) in vec2 uv;
 
@@ -13,8 +15,8 @@ layout(location = 0) out vec4 FragColor;
 
 layout(location = 3) uniform sampler2D albedoTexture;
 
-layout(location = 4) uniform bool useTexture;
-layout(location = 5) uniform bool renderDepth;
+layout(location = 4) uniform int useTexture;
+layout(location = 5) uniform int renderDepth;
 
 void main()
 {
@@ -28,7 +30,7 @@ void main()
 
     vec4 albedoColor = vec4(1.0);
     
-    if (useTexture)
+    if (useTexture == 1)
     {
        albedoColor = texture(albedoTexture, fsIn.uv);
     }
@@ -39,7 +41,7 @@ void main()
 
     FragColor = albedoColor;
 
-    if (renderDepth)
+    if (renderDepth == 1)
     {
       float depth = albedoColor.r;
       FragColor = vec4(depth, depth, depth, 1.0);
