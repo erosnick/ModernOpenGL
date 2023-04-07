@@ -117,7 +117,7 @@ std::vector<float> Texture::getImageData()
 
 	//	pixels
 	//	Returns the texture subimage.Should be a pointer to an array of the type specified by type.
-	glGetTextureSubImage(id, 0, 0, 0, 0,width, height, 1, GL_RGBA, GL_FLOAT, computeData.size() * sizeof(float), computeData.data());
+	glGetTextureSubImage(id, 0, 0, 0, 0,width, height, 1, GL_RGBA, GL_FLOAT, static_cast<uint32_t>(computeData.size() * sizeof(float)), computeData.data());
 
 	return computeData;
 }

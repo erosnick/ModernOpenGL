@@ -17,6 +17,7 @@
 
 #include "ComputeShader.h"
 #include "Texture.h"
+#include "Model.h"
 
 using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
@@ -35,18 +36,6 @@ enum class ERenderMode
 {
 	Rasterizing,
 	RayTracing
-};
-
-struct Mesh
-{
-	uint32 indicesCount() const { return static_cast<uint32>(indices.size()); }
-
-	std::vector<GeometryGenerator::SimpleVertex> vertices;
-	std::vector<uint32> indices;
-
-	uint32 VAO;
-	uint32 VBO;
-	uint32 EBO;
 };
 
 class Application
@@ -76,6 +65,7 @@ public:
 	void prepareResources();
 
 	void createBuffers(Mesh& mesh, const GeometryGenerator::MeshData& meshData);
+	void createBuffers(Mesh& mesh);
 
 	void createRayTracingBuffers();
 
@@ -97,6 +87,7 @@ public:
 	void renderScene(float deltaTime);
 
 	void renderGeometry(const Mesh& mesh);
+	void renderWireframeGeometry(const Mesh& mesh);
 
 	void updateSceneShaderUniforms(const glm::vec3& translation);
 	void updateDepthShaderUniforms();
@@ -177,6 +168,7 @@ private:
 
 	bool useTexture = true;
 	bool renderDepth = false;
+	bool isWireframe = false;
 
 	std::vector<glm::ivec2> resolutions{ {1280, 720}, {2560, 1440}, {3840, 2160} };
 
@@ -216,6 +208,8 @@ private:
 	ERenderMode renderMode = ERenderMode::Rasterizing;
 
 	GeometryGenerator geometryGenerator;
+
+	Model model;
 
 	Mesh mesh;
 	Mesh quad;

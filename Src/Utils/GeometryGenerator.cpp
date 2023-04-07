@@ -1,6 +1,6 @@
 #include "GeometryGenerator.h"
 
-std::vector<GeometryGenerator::SimpleVertex> GeometryGenerator::toSimpleVertices(const std::vector<Vertex>& vertices)
+std::vector<SimpleVertex> GeometryGenerator::toSimpleVertices(const std::vector<Vertex>& vertices)
 {
 	std::vector<SimpleVertex> simpleVertices;
 

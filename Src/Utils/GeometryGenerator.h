@@ -4,25 +4,14 @@
 #include <glm/gtc/constants.hpp>
 #include <vector>
 
+#include "Model.h"
+
 class GeometryGenerator 
 {
 public:
 
 	using uint16 = std::uint16_t;
 	using uint32 = std::uint32_t;
-
-	struct SimpleVertex
-	{
-		SimpleVertex()
-		: position{},
-		  normal{},
-		  texcoord{}
-		{}
-
-		glm::vec3 position;
-		glm::vec3 normal;
-		glm::vec2 texcoord;
-	};
 
 	struct Vertex
 	{

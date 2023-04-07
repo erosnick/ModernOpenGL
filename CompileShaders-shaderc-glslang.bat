@@ -14,5 +14,4 @@ glslc -std=460core --target-env=opengl -o Assets/Shaders/RenderDepth.vert.spv As
 glslc -std=460core --target-env=opengl -o Assets/Shaders/RenderDepth.frag.spv Assets/Shaders/RenderDepth.frag
 glslc -std=460core --target-env=opengl -o Assets/Shaders/Image.comp.spv Assets/Shaders/Image.comp
 glslc -std=460core --target-env=opengl -o Assets/Shaders/FloatArray.comp.spv Assets/Shaders/FloatArray.comp
-
 pause

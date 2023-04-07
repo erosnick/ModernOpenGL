@@ -43,7 +43,7 @@ project "Shaders"
 
 	files( shaders )
 
-	handle_glsl_files( "-std=460core --target-env=opengl -O", "Assets/Shaders", {} )
+	handle_glsl_files( "-std=460core --target-env=opengl", "Assets/Shaders", "Assets/Shaders" )
 
 --project: 对应VS中的项目
 project "ModernOpenGL"
@@ -77,6 +77,7 @@ project "ModernOpenGL"
             './ThirdParty/stb',
             './ThirdParty/GLAD',
             './ThirdParty/imgui-1.89.2',
+            './ThirdParty/Assimp/include',
             './ThirdParty/tinyobjloader',
             './ThirdParty/glm-0.9.9.8/glm',
             './ThirdParty/fmt-9.1.0/include',
@@ -89,6 +90,7 @@ project "ModernOpenGL"
 
 		libdirs 
         { 
+            './ThirdParty/Assimp/lib/x64',
             './ThirdParty/FreeType2/Libs',
             './ThirdParty/glfw-3.3.8.bin.WIN64/lib-vc2022',
         }
@@ -97,7 +99,8 @@ project "ModernOpenGL"
         { 
             "ImGui",
             "glfw3.lib", 
-            "freetype.lib"
+            "freetype.lib",
+            "assimp-vc143-mt.lib"
         }
 
         debugdir "%{prj.location}"
@@ -113,6 +116,7 @@ project "ModernOpenGL"
             './ThirdParty/stb',
             './ThirdParty/GLAD',
             './ThirdParty/imgui-1.89.2',
+            './ThirdParty/Assimp/include',
             './ThirdParty/tinyobjloader',
             './ThirdParty/glm-0.9.9.8/glm',
             './ThirdParty/fmt-9.1.0/include',
@@ -125,6 +129,7 @@ project "ModernOpenGL"
 
 		libdirs 
         { 
+            './ThirdParty/Assimp/lib/x64',
             './ThirdParty/FreeType2/Libs',
             './ThirdParty/glfw-3.3.8.bin.WIN64/lib-vc2022',
         }
@@ -133,7 +138,8 @@ project "ModernOpenGL"
         { 
             "ImGui",
             "glfw3.lib",
-            "freetype.lib"
+            "freetype.lib",
+            "assimp-vc143-mt.lib"
         }
 
         debugdir "%{prj.location}"

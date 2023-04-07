@@ -56,6 +56,11 @@ local glslc_build_command_ = function( kind, ext, opt, opath, ipaths )
 			 .. "-o \"" .. ofile .. "\" "
 			 .. "\"%{file.relpath}\""
 		)
+		buildmessage("\"%{wks.location}/../" .. glslc ..  "\" "
+			 .. opt .. " "
+			 .. istr 
+			 .. "-o \"" .. ofile .. "\" "
+			 .. "\"%{file.relpath}\"")
 		buildoutputs( ofile )
 	filter "*"
 end
