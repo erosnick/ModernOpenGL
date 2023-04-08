@@ -122,19 +122,28 @@ std::vector<float> Texture::getImageData()
 	return computeData;
 }
 
-void Texture::load(const std::string& path, int bpp)
+Texture Texture::load(const std::string& path, const std::string& directory, int bpp)
 {
-	// glCreateTextures is the equivalent of glGenTextures + glBindTexture(for initialization).
-	glCreateTextures(GL_TEXTURE_2D, 1, &id);
+	Texture texture;
 
-	glTextureParameteri(id, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTextureParameteri(id, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTextureParameteri(id, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTextureParameteri(id, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	std::string filename = std::string(path);
+	  
+	if (!directory.empty())
+	{
+		filename = directory + '/' + filename;
+	}
+
+	// glCreateTextures is the equivalent of glGenTextures + glBindTexture(for initialization).
+	glCreateTextures(GL_TEXTURE_2D, 1, &texture.id);
+
+	glTextureParameteri(texture.id, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTextureParameteri(texture.id, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	stbi_set_flip_vertically_on_load(true);
 
-	uint8_t* data = stbi_load(path.c_str(), &width, &height, &channels, bpp);
+	uint8_t* data = stbi_load(filename.c_str(), &texture.width, &texture.height, &texture.channels, bpp);
 	//uint8_t* data = stbi_load("./Assets/Textures/globe.jpg", &width, &height, &channels, 4);
 
 	// When target is GL_TEXTURE_2D, GL_PROXY_TEXTURE_2D, GL_TEXTURE_RECTANGLE, GL_PROXY_TEXTURE_RECTANGLE or GL_PROXY_TEXTURE_CUBE_MAP, 
@@ -149,17 +158,19 @@ void Texture::load(const std::string& path, int bpp)
 	// 根据上面的文档，第二个参数levels必须大于等于1，和下面glTextureSubImage2D的levels(mipmap levels)参数含义不同
 	if (bpp == 3)
 	{
-		glTextureStorage2D(id, 1, GL_RGB8, width, height);
-		glTextureSubImage2D(id, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTextureStorage2D(texture.id, 1, GL_RGB8, texture.width, texture.height);
+		glTextureSubImage2D(texture.id, 0, 0, 0, texture.width, texture.height, GL_RGB, GL_UNSIGNED_BYTE, data);
 	}
 	else
 	{
-		glTextureStorage2D(id, 1, GL_RGBA8, width, height);
-		glTextureSubImage2D(id, 0, 0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		glTextureStorage2D(texture.id, 1, GL_RGBA8, texture.width, texture.height);
+		glTextureSubImage2D(texture.id, 0, 0, 0, texture.width, texture.height, GL_RGBA, GL_UNSIGNED_BYTE, data);
 	}
+
+	return texture;
 }
 
-void Texture::use(uint32_t textureUnit)
+const void Texture::use(uint32_t textureUnit) const
 {
 	glBindTextureUnit(textureUnit, id);
 }

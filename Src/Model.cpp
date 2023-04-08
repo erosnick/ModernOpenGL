@@ -1,9 +1,5 @@
 #include "Model.h"
 
-#include <assimp/scene.h>
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-
 #include <iostream>
 
 void Model::load(const std::string& path)
@@ -20,8 +16,13 @@ void Model::load(const std::string& path)
 		return;
 	}
 
+	// retrieve the directory path of the filepath
+	directory = path.substr(0, path.find_last_of('/'));
+
 	for (uint32_t i = 0; i < scene->mNumMeshes; i++)
 	{
+		std::vector<Texture> textures;
+
 		auto mesh = scene->mMeshes[i];
 
 		Mesh submesh;
@@ -37,24 +38,103 @@ void Model::load(const std::string& path)
 
 		for (uint32_t j = 0; j < mesh->mNumVertices; j++)
 		{
-			auto position = mesh->mVertices[j];
-			auto normal = mesh->mNormals[j];
+			SimpleVertex vertex;
 
-			aiVector3D texcoord = { 0.0f, 0.0f, 0.0f };
+			auto attribute = mesh->mVertices[j];
+
+			vertex.position = { attribute.x, attribute.y, attribute.z };
+
+			if (mesh->HasNormals())
+			{
+				attribute = mesh->mNormals[j];
+				vertex.normal = { attribute.x, attribute.y, attribute.z };
+			}
 
 			if (mesh->mTextureCoords[0] != nullptr)
 			{
-				texcoord = mesh->mTextureCoords[0][j];
+				attribute = mesh->mTextureCoords[0][j];
+				vertex.texcoord = { attribute.x, attribute.y };
 			}
-
-			SimpleVertex vertex;
-			vertex.position = { position.x, position.y, position.z };
-			vertex.normal = { normal.x, normal.y, normal.z };
-			vertex.texcoord = { texcoord.x, texcoord.y };
 
 			submesh.addVertex(vertex);
 		}
 
+		// process materials
+		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+
+		// we assume a convention for sampler names in the shaders. Each diffuse texture should be named
+		// as 'texture_diffuseN' where N is a sequential number ranging from 1 to MAX_SAMPLER_NUMBER. 
+		// Same applies to other texture as the following list summarizes:
+		// diffuse: texture_diffuseN
+		// specular: texture_specularN
+		// normal: texture_normalN
+
+		// 1. diffuse maps
+		std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "albedoTexture");
+		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+
+		// 2. specular maps
+		std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "specularTexture");
+		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
+		// 3. normal maps
+		std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_NORMALS, "normalTexture");
+		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+
+		// 4. Metallic maps
+		std::vector<Texture> metallicMaps = loadMaterialTextures(material, aiTextureType_METALNESS, "metallicTexture");
+		textures.insert(textures.end(), metallicMaps.begin(), metallicMaps.end());
+
+		submesh.textures = textures;
+		submesh.numTexture = static_cast<uint32_t>(textures.size());
+
 		meshes.emplace_back(submesh);
 	}
+}
+
+std::vector<Texture> Model::loadMaterialTextures(aiMaterial* material, aiTextureType type, std::string typeName)
+{
+	std::vector<Texture> textures;
+	for (unsigned int i = 0; i < material->GetTextureCount(type); i++)
+	{
+		aiString path;
+		material->GetTexture(type, i, &path);
+		// check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
+		bool skip = false;
+		for (unsigned int j = 0; j < texturesLoaded.size(); j++)
+		{
+			if (std::strcmp(texturesLoaded[j].path.data(), path.C_Str()) == 0)
+			{
+				textures.push_back(texturesLoaded[j]);
+				skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+				break;
+			}
+		}
+		if (!skip)
+		{   // if texture hasn't been loaded already, load it
+			Texture texture;
+
+			// Replace %20(space) with " "
+			std::string modifiedPath = path.C_Str();
+
+			auto position = modifiedPath.find("%20");
+
+			while (position != std::string::npos)
+			{
+				if (position != std::string::npos)
+				{
+					modifiedPath.replace(position, 3, " ");
+				}
+
+				position = modifiedPath.find("%20");
+			}
+
+			texture = Texture::load(modifiedPath, directory);
+			texture.typeName = typeName;
+			texture.path = modifiedPath;
+			textures.push_back(texture);
+			texturesLoaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+		}
+	}
+	return textures;
 }

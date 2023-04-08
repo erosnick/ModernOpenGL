@@ -23,26 +23,22 @@ public:
 
 	std::vector<float> getImageData();
 
-	void load(const std::string& path, int bpp = 4);
+	static Texture load(const std::string& path, const std::string& directory = "", int bpp = 4);
 
-	void use(uint32_t textureUnit);
-
-	int32_t getWidth() const { return width; }
-	int32_t getHeight() const { return height; }
+	const void use(uint32_t textureUnit = 0) const;
 
 	float getAspect() const { return static_cast<float>(width) / static_cast<float>(height); }
-	
-	uint32_t getId() const { return id; }
 
-private:
 	uint32_t id = 0;
 	std::string name = "";
+	std::string path = "";
 	EType type = EType::Texture2D;
-
+	std::string typeName = "";
 	int32_t width = 0;
 	int32_t height = 0;
 	int32_t channels = 0;
 
+private:
 	uint8_t* data = nullptr;
 };
 

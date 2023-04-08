@@ -1,5 +1,7 @@
 #version 460 core
 
+#extension GL_GOOGLE_include_directive : enable
+
 #include "Test.glsl"
 
 // layout(location = 0) in vec3 normal;

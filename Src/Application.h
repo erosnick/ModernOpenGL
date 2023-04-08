@@ -23,6 +23,13 @@ using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
 using int32 = std::int32_t;
 
+static bool rightMouseButtonDown = false;
+static bool middleMouseButtonDown = false;
+
+static glm::vec2 lastMousePosition;
+
+const float FrameTime = 0.0166667f;
+
 // Holds all state information relevant to a character as loaded using FreeType
 struct Character
 {
@@ -39,12 +46,14 @@ enum class ERenderMode
 };
 
 class Application
-{
+{ 
 public:
 	// Forward declarations
 	static void framebufferSizeCallback(GLFWwindow* window, int32 width, int32 height);
 	static void keyCallback(GLFWwindow* window, int32 key, int32 scancode, int32 action, int32 mods);
-	static void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
+	static void mouseMoveCallback(GLFWwindow* inWindow, double xpos, double ypos);
+	static void mouseScrollCallback(GLFWwindow* inWindow, double xoffset, double yoffset);
+	static void mouseButtonCallback(GLFWwindow* inWindow, int32_t button, int32_t action, int32_t mods);
 
 	void processInput(GLFWwindow* window);
 
@@ -89,7 +98,7 @@ public:
 	void renderGeometry(const Mesh& mesh);
 	void renderWireframeGeometry(const Mesh& mesh);
 
-	void updateSceneShaderUniforms(const glm::vec3& translation);
+	void updateSceneShaderUniforms(const glm::vec3& translation, const glm::vec3& rotation = glm::vec3(0.0f), const glm::vec3& scale = glm::vec3(1.0f));
 	void updateDepthShaderUniforms();
 
 	void renderRayTracing(const Mesh& mesh);
@@ -179,7 +188,7 @@ private:
 	const int32 SHADOW_WIDTH = 1024;
 	const int32 SHADOW_HEIGHT = 1024;
 
-	Camera camera{ glm::vec3(0.0f, 0.0f, 10.0f) };
+	Camera camera{ glm::vec3(0.0f, 0.0f, 5.0f) };
 
 	Shader shader;
 	Shader textShader;
