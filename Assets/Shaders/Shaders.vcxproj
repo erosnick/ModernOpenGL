@@ -82,6 +82,20 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CustomBuild Include="DebugDepth.frag">
+      <FileType>Document</FileType>
+      <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
+"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>DebugDepth.frag.spv</Outputs>
+      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+    </CustomBuild>
+    <CustomBuild Include="DebugDepth.vert">
+      <FileType>Document</FileType>
+      <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
+"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>DebugDepth.vert.spv</Outputs>
+      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+    </CustomBuild>
     <CustomBuild Include="FloatArray.comp">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")

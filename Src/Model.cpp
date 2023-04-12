@@ -92,6 +92,12 @@ void Model::load(const std::string& path)
 	}
 }
 
+void Model::addMesh(const Mesh& mesh)
+{
+	meshes.emplace_back(mesh);
+	numMeshes++;
+}
+
 std::vector<Texture> Model::loadMaterialTextures(aiMaterial* material, aiTextureType type, std::string typeName)
 {
 	std::vector<Texture> textures;

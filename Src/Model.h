@@ -61,6 +61,8 @@ struct Model
 {
 	void load(const std::string& path);
 
+	void addMesh(const Mesh& mesh);
+
 	// checks all material textures of a given type and loads the textures if they're not loaded yet.
 	// the required info is returned as a Texture struct.
 	std::vector<Texture> loadMaterialTextures(aiMaterial* material, aiTextureType type, std::string typeName);
@@ -72,4 +74,8 @@ struct Model
 	uint32_t numMeshes = 0;
 
 	std::string directory;
+
+	glm::vec3 position{ 0.0f };
+	glm::vec3 scale{ 1.0f };
+	glm::vec3 rotation{ 0.0f };
 };

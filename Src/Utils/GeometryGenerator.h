@@ -93,32 +93,32 @@ public:
 	///<summary>
 	/// Creates a quad centered at the origin with the given dimensions,
 	///</summary>
-	MeshData createQuad(float width, float height);
+	MeshData createQuad(float width, float height, float uvScale = 1.0f);
 
     ///<summary>
 	/// Creates a box centered at the origin with the given dimensions, where each
     /// face has m rows and n columns of vertices.
 	///</summary>
-    MeshData createBox(float width, float height, float depth, uint32_t numSubdivisions);
+    MeshData createBox(float width, float height, float depth, uint32_t numSubdivisions, float uvScale = 1.0f);
 
 	///<summary>
 	/// Creates a sphere centered at the origin with the given radius.  The
 	/// slices and stacks parameters control the degree of tessellation.
 	///</summary>
-	MeshData createSphere(float radius, uint32 sliceCount, uint32 stackCount);
+	MeshData createSphere(float radius, uint32 sliceCount, uint32 stackCount, float uvScale = 1.0f);
 
 	///<summary>
 	/// Creates a geosphere centered at the origin with the given radius.  The
 	/// depth controls the level of tessellation.
 	///</summary>
-	MeshData createGeosphere(float radius, uint32 numSubdivisions);
+	MeshData createGeosphere(float radius, uint32 numSubdivisions, float uvScale = 1.0f);
 
 	///<summary>
 	/// Creates a cylinder parallel to the y-axis, and centered about the origin.  
 	/// The bottom and top radius can vary to form various cone shapes rather than true
 	// cylinders.  The slices and stacks parameters control the degree of tessellation.
 	///</summary>
-    MeshData createCylinder(float bottomRadius, float topRadius, float height, uint32_t sliceCount, uint32_t stackCount);
+    MeshData createCylinder(float bottomRadius, float topRadius, float height, uint32_t sliceCount, uint32_t stackCount, float uvScale = 1.0f);
 
 	///<summary>
 	/// Creates an mxn grid in the xz-plane with m rows and n columns, centered

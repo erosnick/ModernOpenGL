@@ -95,10 +95,14 @@ public:
 
 	void renderScene(float deltaTime);
 
+	void renderScene(const Shader& shader, bool renderDepth = false);
+
 	void renderGeometry(const Mesh& mesh);
 	void renderWireframeGeometry(const Mesh& mesh);
 
+	void updateObjectShaderUniform(const Shader& shader, const Model& object);
 	void updateSceneShaderUniforms(const glm::vec3& translation, const glm::vec3& rotation = glm::vec3(0.0f), const glm::vec3& scale = glm::vec3(1.0f));
+	void updateSceneShaderUniforms(const Shader& shader);
 	void updateDepthShaderUniforms();
 
 	void renderRayTracing(const Mesh& mesh);
@@ -136,6 +140,7 @@ public:
 	void toggleTexture() { useTexture = !useTexture; }
 
 	void toggleRenderDepth() { renderDepth = !renderDepth; }
+	void toggleDebugDepth() { debugDepth = !debugDepth; }
 
 	void testBed();
 	
@@ -178,8 +183,14 @@ private:
 	bool useTexture = true;
 	bool renderDepth = false;
 	bool isWireframe = false;
+	bool debugDepth = false;
 
-	std::vector<glm::ivec2> resolutions{ {1280, 720}, {2560, 1440}, {3840, 2160} };
+	const float nearPlane = 1.0f;
+	const float farPlane = 7.5f;
+
+	glm::vec3 lightPosition{ -2.0f, 4.0f, -1.0f };
+
+	std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
 
 	// settings
 	const int32 SCREEN_WIDTH = resolutions[0].x;
@@ -188,7 +199,7 @@ private:
 	const int32 SHADOW_WIDTH = 1024;
 	const int32 SHADOW_HEIGHT = 1024;
 
-	Camera camera{ glm::vec3(0.0f, 0.0f, 5.0f) };
+	Camera camera{ glm::vec3(2.0f, 0.0f, 3.0f) };
 
 	Shader shader;
 	Shader textShader;
@@ -197,8 +208,10 @@ private:
 	Shader screenQuadShader;
 	Shader rayTracingShader;
 	Shader renderDepthShader;
+	Shader debugDepthShader;
 
 	Texture albedoTexture;
+	Texture woodTexture;
 
 	ComputeShader computeShader{ glm::uvec2(SCREEN_WIDTH, SCREEN_HEIGHT) };
 
@@ -218,8 +231,9 @@ private:
 
 	GeometryGenerator geometryGenerator;
 
-	Model model;
+	Model cube;
 
 	Mesh mesh;
-	Mesh quad;
+	Model quad;
+	Mesh screenQuad;
 };

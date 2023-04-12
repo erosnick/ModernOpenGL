@@ -13,7 +13,7 @@ std::vector<SimpleVertex> GeometryGenerator::toSimpleVertices(const std::vector<
 	return simpleVertices;
 }
 
-GeometryGenerator::MeshData GeometryGenerator::createQuad(float width, float height)
+GeometryGenerator::MeshData GeometryGenerator::createQuad(float width, float height, float uvScale)
 {
 	Vertex vertex[4];
 
@@ -21,9 +21,9 @@ GeometryGenerator::MeshData GeometryGenerator::createQuad(float width, float hei
 	float halfHeight = 0.5f * height;
 
 	vertex[0] = { -halfWidth, -halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f };
-	vertex[1] = {  halfWidth, -halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f };
-	vertex[2] = {  halfWidth,  halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f };
-	vertex[3] = { -halfWidth,  halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
+	vertex[1] = {  halfWidth, -halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, uvScale, 0.0f };
+	vertex[2] = {  halfWidth,  halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, uvScale, uvScale };
+	vertex[3] = { -halfWidth,  halfHeight, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, uvScale };
 
 	MeshData meshData;
 
@@ -36,7 +36,7 @@ GeometryGenerator::MeshData GeometryGenerator::createQuad(float width, float hei
 	return meshData;
 }
 
-GeometryGenerator::MeshData GeometryGenerator::createBox(float width, float height, float depth, uint32_t numSubdivisions) 
+GeometryGenerator::MeshData GeometryGenerator::createBox(float width, float height, float depth, uint32_t numSubdivisions, float uvScale)
 {
     //
 	// Create the vertices.
@@ -131,7 +131,7 @@ GeometryGenerator::MeshData GeometryGenerator::createBox(float width, float heig
     return meshData;
 }
 
-GeometryGenerator::MeshData GeometryGenerator::createSphere(float radius, uint32 sliceCount, uint32 stackCount)
+GeometryGenerator::MeshData GeometryGenerator::createSphere(float radius, uint32 sliceCount, uint32 stackCount, float uvScale)
 {
 	MeshData meshData;
 
@@ -240,7 +240,7 @@ GeometryGenerator::MeshData GeometryGenerator::createSphere(float radius, uint32
 	return meshData;
 }
 
-GeometryGenerator::MeshData GeometryGenerator::createGeosphere(float radius, uint32 numSubdivisions)
+GeometryGenerator::MeshData GeometryGenerator::createGeosphere(float radius, uint32 numSubdivisions, float uvScale)
 {
 	MeshData meshData;
 
@@ -312,7 +312,7 @@ GeometryGenerator::MeshData GeometryGenerator::createGeosphere(float radius, uin
 	return meshData;
 }
 
-GeometryGenerator::MeshData GeometryGenerator::createCylinder(float bottomRadius, float topRadius, float height, uint32_t sliceCount, uint32_t stackCount)
+GeometryGenerator::MeshData GeometryGenerator::createCylinder(float bottomRadius, float topRadius, float height, uint32_t sliceCount, uint32_t stackCount, float uvScale)
 {
 	MeshData meshData;
 

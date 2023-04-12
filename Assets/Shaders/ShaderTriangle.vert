@@ -4,15 +4,17 @@
 // #extension GL_NV_uniform_buffer_std430_layout : enable
 #extension GL_EXT_scalar_block_layout : enable
 
-layout(location = 0) in vec3 aPosition;
-layout(location = 1) in vec3 aNormal;
-layout(location = 2) in vec2 aTexcoord;
+layout(location = 0) in vec3 inPosition;
+layout(location = 1) in vec3 inNormal;
+layout(location = 2) in vec2 inTexcoord;
 
 // layout(location = 0) out vec3 normal;
 // layout(location = 1) out vec2 uv;
 
 layout (location = 0) out VSOut
 {
+  vec3 fragPos;
+  vec4 fragPosLightSpace;
   vec3 normal;
   vec2 uv;
 } vsOut;
@@ -27,11 +29,13 @@ layout (location = 0) out VSOut
 layout (location = 0) uniform mat4 model;
 layout (location = 1) uniform mat4 projection;
 layout (location = 2) uniform mat4 view;
+layout (location = 3) uniform mat4 lightSpaceMatrix;
 
 void main ()
 {
-  gl_Position = projection * view * model * vec4(aPosition, 1.0);
-  vsOut.normal =  (model * vec4(aNormal, 0.0)).xyz;
-  vsOut.uv = aTexcoord;
-  // vsOut.uv.y = 1.0 - vsOut.uv.y;
+  gl_Position = projection * view * model * vec4(inPosition, 1.0);
+  vsOut.fragPos = (model * vec4(inPosition, 1.0)).xyz;
+  vsOut.fragPosLightSpace = (lightSpaceMatrix * vec4(vsOut.fragPos, 1.0));
+  vsOut.normal =  transpose(inverse(mat3(model))) * inNormal;
+  vsOut.uv = inTexcoord;
 }
