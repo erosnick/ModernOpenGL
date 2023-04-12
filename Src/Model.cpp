@@ -138,3 +138,43 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* material, aiTexture
 	}
 	return textures;
 }
+
+void Mesh::createBuffers()
+{
+	glCreateVertexArrays(1, &VAO);// This is the way.
+
+	VBOIndexed.Create();
+	VBOIndexed.Bind(VAO, sizeof(SimpleVertex));
+
+	for (size_t i = 0; i < numVertices; i++)
+	{
+		const auto& vertex = vertices[i];
+
+		VBOIndexed.AddVertexData(&vertex, sizeof(SimpleVertex));
+	}
+
+	for (size_t i = 0; i < numIndices; i++)
+	{ 
+		auto index = indices[i];
+		VBOIndexed.AddIndexData(&index, sizeof(uint32_t));
+	}
+
+	VBOIndexed.UploadDataToGPU(GL_DYNAMIC_STORAGE_BIT);
+
+	GLuint attributePosition = 0;
+	GLuint attributeNormal = 1;
+	GLuint attributeTexcoord = 2;
+
+	glEnableVertexArrayAttrib(VAO, attributePosition);	// Need to precise vao, as there is no context binding in DSA style
+	glEnableVertexArrayAttrib(VAO, attributeNormal);	// Meaning no current vao is bound to the opengl context.
+	glEnableVertexArrayAttrib(VAO, attributeTexcoord);	// Meaning no current vao is bound to the opengl context.
+
+	glVertexArrayAttribFormat(VAO, attributePosition, 3, GL_FLOAT, false, 0);// Need to precise vao, as there is no context binding in DSA
+	glVertexArrayAttribFormat(VAO, attributeNormal, 3, GL_FLOAT, false, sizeof(float) * 3);//https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribFormat.xhtml
+	glVertexArrayAttribFormat(VAO, attributeTexcoord, 2, GL_FLOAT, false, sizeof(float) * 6);//https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glVertexAttribFormat.xhtml
+
+	//Explicit binding of an attribute to a vao binding point
+	glVertexArrayAttribBinding(VAO, attributePosition, 0);
+	glVertexArrayAttribBinding(VAO, attributeNormal, 0);
+	glVertexArrayAttribBinding(VAO, attributeTexcoord, 0);
+}

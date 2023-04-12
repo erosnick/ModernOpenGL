@@ -10,6 +10,8 @@
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 
+#include "VertexBufferObjectIndexed.h"
+
 struct SimpleVertex
 {
 	SimpleVertex()
@@ -25,17 +27,19 @@ struct SimpleVertex
 
 struct Mesh
 {
-	uint32_t indicesCount() const { return static_cast<uint32_t>(indices.size()); }
-
 	void addVertex(const SimpleVertex& vertex)
 	{
 		vertices.emplace_back(vertex);
+		numVertices++;
 	}
 
 	void addIndex(uint32_t index)
 	{
 		indices.push_back(index);
+		numIndices++;
 	}
+
+	void createBuffers();
 
 	std::vector<SimpleVertex> vertices;
 	std::vector<uint32_t> indices;
@@ -43,10 +47,14 @@ struct Mesh
 	std::vector<Texture> textures;
 
 	uint32_t numTexture = 0;
+	uint32_t numVertices = 0;
+	uint32_t numIndices = 0;
 
 	uint32_t VAO;
 	uint32_t VBO;
 	uint32_t EBO;
+
+	CVertexBufferObjectIndexed VBOIndexed;
 };
 
 struct Model

@@ -189,10 +189,13 @@
     <ClInclude Include="..\src\Application.h" />
     <ClInclude Include="..\src\ComputeShader.h" />
     <ClInclude Include="..\src\Model.h" />
+    <ClInclude Include="..\src\Random.h" />
     <ClInclude Include="..\src\Texture.h" />
     <ClInclude Include="..\src\Utils\GeometryGenerator.h" />
     <ClInclude Include="..\src\Utils\glDebug.h" />
     <ClInclude Include="..\src\Utils\root_directory.h" />
+    <ClInclude Include="..\src\VertexBufferObject.h" />
+    <ClInclude Include="..\src\VertexBufferObjectIndexed.h" />
     <ClInclude Include="..\src\learnopengl\Shader.h" />
     <ClInclude Include="..\src\learnopengl\animation.h" />
     <ClInclude Include="..\src\learnopengl\animator.h" />
@@ -216,9 +219,12 @@
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
     <ClCompile Include="..\src\Model.cpp" />
+    <ClCompile Include="..\src\Random.cpp" />
     <ClCompile Include="..\src\Texture.cpp" />
     <ClCompile Include="..\src\Utils\GeometryGenerator.cpp" />
     <ClCompile Include="..\src\Utils\glDebug.cpp" />
+    <ClCompile Include="..\src\VertexBufferObject.cpp" />
+    <ClCompile Include="..\src\VertexBufferObjectIndexed.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ImGui.vcxproj">

@@ -18,6 +18,9 @@
     <ClInclude Include="..\src\Model.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Random.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Texture.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -28,6 +31,12 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils\root_directory.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\VertexBufferObject.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\VertexBufferObjectIndexed.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\learnopengl\Shader.h">
@@ -95,6 +104,9 @@
     <ClCompile Include="..\src\Model.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Random.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Texture.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -102,6 +114,12 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils\glDebug.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexBufferObject.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexBufferObjectIndexed.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
