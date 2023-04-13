@@ -1,8 +1,8 @@
 #version 460 core
 
-layout (location = 0) out vec4 FragColor;
+layout (location = 0) out vec4 fragColor;
 
-layout (location = 0) in vec2 TexCoords;
+layout (location = 0) in vec2 texCoords;
 
 layout (location = 0) uniform sampler2D shadowMap;
 layout (location = 1) uniform float nearPlane;
@@ -17,7 +17,7 @@ float LinearizeDepth(float depth)
 
 void main()
 {             
-    float depthValue = texture(shadowMap, TexCoords).r;
-    FragColor = vec4(vec3(depthValue), 1.0); // orthographic
+    float depthValue = texture(shadowMap, texCoords).r;
+    fragColor = vec4(vec3(depthValue), 1.0); // orthographic
     // FragColor = vec4(vec3(LinearizeDepth(depthValue) / farPlane), 1.0); // perspective
 }

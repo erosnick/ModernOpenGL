@@ -45,6 +45,12 @@ enum class ERenderMode
 	RayTracing
 };
 
+enum class ESceneSelection
+{
+	DirectionalShadow,
+	PointShadow
+};
+
 class Application
 { 
 public:
@@ -87,7 +93,10 @@ public:
 	void createTextResources();
 
 	void createColorFrameBufer();
-	void createDepthFrameBuffer();
+	void createDepthMapFrameBuffer();
+	void createDepthCubeMapFrameBuffer();
+
+	void setupShadwoTransforms();
 
 	void run();
 
@@ -95,15 +104,17 @@ public:
 
 	void renderScene(float deltaTime);
 
-	void renderScene(const Shader& shader, bool renderDepth = false);
+	void renderDirectionalShadowMapScene(const Shader& shader, bool renderDepth = false);
+	void renderPointShadowMapScene(const Shader& shader, bool renderDepth = false);
 
 	void renderGeometry(const Mesh& mesh);
 	void renderWireframeGeometry(const Mesh& mesh);
 
-	void updateObjectShaderUniform(const Shader& shader, const Model& object);
-	void updateSceneShaderUniforms(const glm::vec3& translation, const glm::vec3& rotation = glm::vec3(0.0f), const glm::vec3& scale = glm::vec3(1.0f));
-	void updateSceneShaderUniforms(const Shader& shader);
-	void updateDepthShaderUniforms();
+	void updateObjectShaderUniform(const Shader& shader, Model* object);
+	void updateDirectionalShadowMapUniforms(const Shader& shader);
+	void updatePointShadowMapUniforms(const Shader& shader);
+	void updateDepthMapShaderUniforms(bool perspectiveProjection = false);
+	void updateDepthCubeMapShaderUniforms();
 
 	void renderRayTracing(const Mesh& mesh);
 
@@ -149,6 +160,8 @@ public:
 
 	void processMouseScroll(float yOffset);
 
+public:
+	ESceneSelection scene = ESceneSelection::DirectionalShadow;
 private:
 	const std::string FONT_BASE = "../Assets/Fonts/";
 	const std::string SHADER_BASE = "../Assets/Shaders/";
@@ -170,10 +183,12 @@ private:
 	uint32 rayMarchingVBO;
 
 	uint32 colorFBO;
-	uint32 depthFBO;
+	uint32 depthMapFBO;
+	uint32 depthCubeMapFBO;
 
 	uint32 renderToTexture;
-	uint32 depthTexture;
+	uint32 depthMap;
+	uint32 depthCubeMap;
 
 	// Our state
 	bool showDemoWindow = true;
@@ -185,10 +200,14 @@ private:
 	bool isWireframe = false;
 	bool debugDepth = false;
 
-	const float nearPlane = 1.0f;
-	const float farPlane = 7.5f;
+	const float orthoNearPlane = 1.0f;
+	const float orthoFarPlane = 7.5f;
 
-	glm::vec3 lightPosition{ -2.0f, 4.0f, -1.0f };
+	const float perpsectiveNearPlane = 1.0f;
+	const float perpsectiveFarPlane = 25.0f;
+
+	glm::vec3 directionalShadowsLightPosition{ -2.0f, 4.0f, -1.0f };
+	glm::vec3 pointShadowsLightPosition{ 0.0f, 0.0f, 0.0f };
 
 	std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
 
@@ -209,6 +228,9 @@ private:
 	Shader rayTracingShader;
 	Shader renderDepthShader;
 	Shader debugDepthShader;
+
+	Shader pointShadowsDepthShader;
+	Shader pointShadowsShader;
 
 	Texture albedoTexture;
 	Texture woodTexture;
@@ -231,9 +253,13 @@ private:
 
 	GeometryGenerator geometryGenerator;
 
-	Model cube;
+	std::shared_ptr<Model> cube;
 
 	Mesh mesh;
-	Model quad;
+	std::shared_ptr<Model> quad;
 	Mesh screenQuad;
+
+	std::vector<std::shared_ptr<Model>> models;
+
+	std::vector<glm::mat4> shadowTransforms;
 };
