@@ -22,6 +22,8 @@
 #include <learnopengl/assimp_glm_helpers.h>
 #include <learnopengl/animdata.h>
 
+#include "Log.h"
+
 using namespace std;
 
 class Model 
@@ -66,7 +68,7 @@ private:
         // check for errors
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
         {
-            cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << endl;
+			ARIA_CORE_CRITICAL("ERROR::ASSIMP:: {0}", importer.GetErrorString());
             return;
         }
         // retrieve the directory path of the filepath
@@ -92,7 +94,6 @@ private:
         {
             processNode(node->mChildren[i], scene);
         }
-
     }
 
 	void SetVertexBoneDataToDefault(Vertex& vertex)
@@ -103,7 +104,6 @@ private:
 			vertex.m_Weights[i] = 0.0f;
 		}
 	}
-
 
 	Mesh processMesh(aiMesh* mesh, const aiScene* scene)
 	{
@@ -165,7 +165,6 @@ private:
 		}
 	}
 
-
 	void ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene)
 	{
 		auto& boneInfoMap = m_BoneInfoMap;
@@ -202,7 +201,6 @@ private:
 		}
 	}
 
-
 	unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false)
 	{
 		string filename = string(path);
@@ -236,7 +234,7 @@ private:
 		}
 		else
 		{
-			std::cout << "Texture failed to load at path: " << path << std::endl;
+			ARIA_CORE_CRITICAL("Texture failed to load at path: {0}", path);
 			stbi_image_free(data);
 		}
 
@@ -276,7 +274,5 @@ private:
         return textures;
     }
 };
-
-
 
 #endif

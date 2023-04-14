@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "Log.h"
+
 void Model::load(const std::string& path)
 {
 	// read file via ASSIMP
@@ -12,7 +14,7 @@ void Model::load(const std::string& path)
 	// check for errors
 	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
 	{
-		std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
+		ARIA_CORE_CRITICAL("ERROR::ASSIMP:: {0}", importer.GetErrorString());
 		return;
 	}
 

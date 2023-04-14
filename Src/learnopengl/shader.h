@@ -9,6 +9,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "Log.h"
+
 class Shader
 {
 public:
@@ -68,7 +70,7 @@ public:
 		}
 		catch (std::ifstream::failure& e)
 		{
-			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: " << e.what() << std::endl;
+			ARIA_CORE_CRITICAL("ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: {0}", e.what());
 		}
 
 		const char* vertexShaderSource = vertexShaderCode.c_str();
@@ -163,7 +165,7 @@ public:
 		}
 		catch (std::ifstream::failure& e)
 		{
-			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: " << e.what() << std::endl;
+			ARIA_CORE_CRITICAL("ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: {0}", e.what());
 		}
 
 		std::istreambuf_iterator<char> vertexShaderStreamStartIt(vertexShaderFile), vertexShaderStreamEndIt;
@@ -322,8 +324,8 @@ private:
             if(!success)
             {
                 glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-                std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
-            }
+				ARIA_CORE_CRITICAL("ERROR::SHADER_COMPILATION_ERROR of type: {0}\n{1}\n{2}", type, infoLog, " -- --------------------------------------------------- -- ");
+			}
         }
         else
         {
@@ -331,7 +333,7 @@ private:
             if(!success)
             {
                 glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-                std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+				ARIA_CORE_CRITICAL("ERROR::PROGRAM_LINKING_ERROR of type: {0}\n{1}\n{2}", type, infoLog, " -- --------------------------------------------------- -- ");
             }
         }
     }

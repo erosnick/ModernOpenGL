@@ -15,6 +15,9 @@
     <ClInclude Include="..\src\ComputeShader.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Log.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Model.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -75,15 +78,6 @@
     <ClInclude Include="..\src\learnopengl\model_animation.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\learnopengl\shader_m.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\learnopengl\shader_s.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\learnopengl\shader_t.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\GLAD\glad.c">
@@ -96,6 +90,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Log.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Main.cpp">

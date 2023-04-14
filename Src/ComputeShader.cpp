@@ -2,6 +2,8 @@
 
 #include <glad/glad.h>
 
+#include "Log.h"
+
 ComputeShader::ComputeShader(const glm::uvec2& inWorkSize)
 	: ID(), workSize{ inWorkSize }
 {
@@ -36,7 +38,7 @@ void ComputeShader::load(const std::string& path)
 
 	catch (std::ifstream::failure& e)
 	{
-		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: " << e.what() << std::endl;
+		ARIA_CORE_CRITICAL("ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: {0}", e.what());
 	}
 
 	// 2. compile shaders
@@ -99,7 +101,7 @@ void ComputeShader::checkCompileErrors(uint32_t shader, std::string type)
 		if (!success)
 		{
 			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+			ARIA_CORE_CRITICAL("ERROR::SHADER_COMPILATION_ERROR of type: {0}\n{1}\n{2}", type, infoLog, " -- --------------------------------------------------- -- ");
 		}
 	}
 	else
@@ -108,7 +110,7 @@ void ComputeShader::checkCompileErrors(uint32_t shader, std::string type)
 		if (!success)
 		{
 			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+			ARIA_CORE_CRITICAL("ERROR::PROGRAM_LINKING_ERROR of type: {0}\n{1}\n{2}", type, infoLog, " -- --------------------------------------------------- -- ");
 		}
 	}
 }
