@@ -89,6 +89,8 @@ void Model::load(const std::string& path)
 		submesh.numTexture = static_cast<uint32_t>(textures.size());
 
 		meshes.emplace_back(submesh);
+
+		numMeshes++;
 	}
 }
 

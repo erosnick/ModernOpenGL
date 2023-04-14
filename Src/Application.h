@@ -218,7 +218,7 @@ private:
 	const int32 SHADOW_WIDTH = 1024;
 	const int32 SHADOW_HEIGHT = 1024;
 
-	Camera camera{ glm::vec3(2.0f, 0.0f, 3.0f) };
+	Camera camera{ glm::vec3(0.0f, 0.0f, 3.0f) };
 
 	Shader shader;
 	Shader textShader;
@@ -258,6 +258,8 @@ private:
 	Mesh mesh;
 	std::shared_ptr<Model> quad;
 	Mesh screenQuad;
+
+	std::shared_ptr<Model> marry;
 
 	std::vector<std::shared_ptr<Model>> models;
 

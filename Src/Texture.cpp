@@ -122,7 +122,7 @@ std::vector<float> Texture::getImageData()
 	return computeData;
 }
 
-Texture Texture::load(const std::string& path, const std::string& directory, int bpp)
+Texture Texture::load(const std::string &path, const std::string &directory, int bpp, bool flipVertically)
 {
 	Texture texture;
 
@@ -141,7 +141,7 @@ Texture Texture::load(const std::string& path, const std::string& directory, int
 	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	stbi_set_flip_vertically_on_load(true);
+	stbi_set_flip_vertically_on_load(flipVertically);
 
 	uint8_t* data = stbi_load(filename.c_str(), &texture.width, &texture.height, &texture.channels, bpp);
 	//uint8_t* data = stbi_load("./Assets/Textures/globe.jpg", &width, &height, &channels, 4);
