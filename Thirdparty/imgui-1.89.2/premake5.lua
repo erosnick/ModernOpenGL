@@ -2,7 +2,7 @@ project "ImGui"
 	kind "StaticLib"
 	language "C++"
     staticruntime "off"
-
+	location "../Project"
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")

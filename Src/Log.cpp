@@ -11,11 +11,11 @@ void Log::init()
 	coreLogger = spdlog::stdout_color_mt("Aria");
 	coreLogger->set_level(spdlog::level::trace);
 
-	coreLogger->trace("trace");
-	coreLogger->info("info");
-	coreLogger->warn("warn");
-	coreLogger->error("error");
-	coreLogger->critical("critical");
+	//coreLogger->trace("trace");
+	//coreLogger->info("info");
+	//coreLogger->warn("warn");
+	//coreLogger->error("error");
+	//coreLogger->critical("critical");
 
 	clientLogger = spdlog::stdout_color_mt("App");
 	clientLogger->set_level(spdlog::level::trace);

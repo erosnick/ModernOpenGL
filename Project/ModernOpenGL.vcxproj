@@ -226,7 +226,7 @@
     <ClCompile Include="..\src\VertexBufferObjectIndexed.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ImGui.vcxproj">
+    <ProjectReference Include="..\ThirdParty\Project\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>

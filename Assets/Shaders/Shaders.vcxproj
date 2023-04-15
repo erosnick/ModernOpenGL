@@ -85,163 +85,163 @@
     <CustomBuild Include="DebugDepth.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>DebugDepth.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="DebugDepth.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>DebugDepth.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="FloatArray.comp">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>FloatArray.comp.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="Image.comp">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>Image.comp.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="PointShadows.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>PointShadows.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="PointShadows.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>PointShadows.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="PointShadowsDepth.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>PointShadowsDepth.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="PointShadowsDepth.geom">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>PointShadowsDepth.geom.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="PointShadowsDepth.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>PointShadowsDepth.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RayMarching.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RayMarching.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RayMarching.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RayMarching.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RayTrace.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RayTrace.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RayTrace.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RayTrace.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RayTracing.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RayTracing.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RayTracing.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RayTracing.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RenderDepth.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RenderDepth.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="RenderDepth.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>RenderDepth.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="ScreenQuad.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>ScreenQuad.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="ScreenQuad.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>ScreenQuad.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="ShaderTriangle.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>ShaderTriangle.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="ShaderTriangle.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>ShaderTriangle.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="Text.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>Text.frag.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
     <CustomBuild Include="Text.vert">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
-"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
       <Outputs>Text.vert.spv</Outputs>
-      <Message>"$(SolutionDir)/../ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/../Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

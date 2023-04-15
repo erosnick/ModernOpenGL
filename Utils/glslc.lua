@@ -42,7 +42,7 @@ local glslc_build_command_ = function( kind, ext, opt, opath, ipaths )
 		ofile = ofile .. opath;
 	else
 		odir = "%{wks.location}/../" .. opath;
-		ofile = ofile .. "%{wks.location}/../" .. opath;
+		ofile = ofile .. "%{wks.location}/" .. opath;
 	end
 	ofile = ofile .. "/%{file.name}.spv";
 
@@ -50,13 +50,13 @@ local glslc_build_command_ = function( kind, ext, opt, opath, ipaths )
 		buildmessage( "GLSLC: [" .. kind .. "] '%{file.name}'" );
 		buildcommands( "{mkdir} \"" .. odir .. "\"" );
 		buildcommands(
-			 "\"%{wks.location}/../" .. glslc ..  "\" "
+			 "\"%{wks.location}/" .. glslc ..  "\" "
 			 .. opt .. " "
 			 .. istr 
 			 .. "-o \"" .. ofile .. "\" "
 			 .. "\"%{file.relpath}\""
 		)
-		buildmessage("\"%{wks.location}/../" .. glslc ..  "\" "
+		buildmessage("\"%{wks.location}/" .. glslc ..  "\" "
 			 .. opt .. " "
 			 .. istr 
 			 .. "-o \"" .. ofile .. "\" "

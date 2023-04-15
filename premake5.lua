@@ -1,8 +1,9 @@
 --workspace: 对应VS中的解决方案
 workspace "ModernOpenGL"
     configurations { "Debug", "Release" }    --解决方案配置项，Debug和Release默认配置
-    location "Project"                      --解决方案文件夹，这是我自己喜欢用的project简写
+    location "."                             --解决方案文件夹，这是我自己喜欢用的project简写
     cppdialect "c++17"    
+    startproject "ModernOpenGL"
     -- Turn on DPI awareness
     dpiawareness "High"
 
@@ -50,6 +51,7 @@ project "ModernOpenGL"
     kind "ConsoleApp"                       --项目类型，控制台程序
     language "C++"                          --工程采用的语言，Premake5.0当前支持C、C++、C#
     dependson { "Shaders" }
+    location "Project"
     files 
     { 
         "src/**.h", 
@@ -69,7 +71,9 @@ project "ModernOpenGL"
     --Debug配置项属性
     filter "configurations:Debug"
         defines { "DEBUG", "FMT_HEADER_ONLY" }                 --定义Debug宏(这可以算是默认配置)
-        symbols "On"                        --开启调试符号
+        symbols "On"                                           --开启调试符号
+        debugdir "%{wks.location}"
+
         includedirs 
         { 
             './Src',
@@ -103,12 +107,12 @@ project "ModernOpenGL"
             "assimp-vc143-mt.lib"
         }
 
-        debugdir "%{prj.location}"
-
     --Release配置项属性
     filter "configurations:Release"
         defines { "NDEBUG", "FMT_HEADER_ONLY" }                 --定义NDebug宏(这可以算是默认配置)
-        optimize "On"                        --开启优化参数
+        optimize "On"                                           --开启优化参数
+        debugdir "%{wks.location}"
+
         includedirs 
         { 
             './Src',
@@ -141,7 +145,5 @@ project "ModernOpenGL"
             "freetype.lib",
             "assimp-vc143-mt.lib"
         }
-
-        debugdir "%{prj.location}"
 
 include "External.lua"

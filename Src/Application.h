@@ -163,10 +163,10 @@ public:
 public:
 	ESceneSelection scene = ESceneSelection::DirectionalShadow;
 private:
-	const std::string FONT_BASE = "../Assets/Fonts/";
-	const std::string SHADER_BASE = "../Assets/Shaders/";
-	const std::string MODEL_BASE = "../Assets/Models/";
-	const std::string TEXTURE_BASE = "../Assets/Textures/";
+	const std::string FONT_BASE = "Assets/Fonts/";
+	const std::string SHADER_BASE = "Assets/Shaders/";
+	const std::string MODEL_BASE = "Assets/Models/";
+	const std::string TEXTURE_BASE = "Assets/Textures/";
 
 	std::map<int32, Character> characters;
 	std::map<int32, Character> unicodeCharacters;
