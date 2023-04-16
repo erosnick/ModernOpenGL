@@ -18,6 +18,7 @@
 #include "ComputeShader.h"
 #include "Texture.h"
 #include "Model.h"
+#include "ImGuiLayer.h"
 
 using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
@@ -123,13 +124,7 @@ public:
 	void dispatchComputeShader();
 
 	// ImGui
-	void initImGui(GLFWwindow* window);
 	void buildImGui();
-
-	void updateImGui();
-	void renderImGui();
-
-	void ImGuiShutdown();
 
 	void loadText(const wchar_t* text, GLfloat x, GLfloat y);
 
@@ -264,4 +259,6 @@ private:
 	std::vector<std::shared_ptr<Model>> models;
 
 	std::vector<glm::mat4> shadowTransforms;
+
+	ImGuiLayer imGuiLayer;
 };

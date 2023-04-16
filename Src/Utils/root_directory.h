@@ -1,1 +1,1 @@
-const char * logl_root = "./";
+static const char * logl_root = "./";
