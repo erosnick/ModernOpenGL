@@ -2,6 +2,10 @@
 
 #include <glm/glm.hpp>
 
+#include <glad/glad.h>
+
+#include "VertexBufferLayout.h"
+
 struct SimpleVertex
 {
 	SimpleVertex()
@@ -13,12 +17,4 @@ struct SimpleVertex
 	glm::vec3 position;
 	glm::vec3 normal;
 	glm::vec2 texcoord;
-};
-
-struct VertexElementLayout
-{
-	uint32_t index;
-	int32_t size;
-	uint32_t type;
-	uint32_t offset;
 };

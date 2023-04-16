@@ -199,6 +199,7 @@
     <ClInclude Include="..\src\Utils\root_directory.h" />
     <ClInclude Include="..\src\Vertex.h" />
     <ClInclude Include="..\src\VertexArrayObject.h" />
+    <ClInclude Include="..\src\VertexBufferLayout.h" />
     <ClInclude Include="..\src\VertexBufferObject.h" />
     <ClInclude Include="..\src\VertexBufferObjectIndexed.h" />
     <ClInclude Include="..\src\learnopengl\Shader.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="..\src\Utils\GeometryGenerator.cpp" />
     <ClCompile Include="..\src\Utils\glDebug.cpp" />
     <ClCompile Include="..\src\VertexArrayObject.cpp" />
+    <ClCompile Include="..\src\VertexBufferLayout.cpp" />
     <ClCompile Include="..\src\VertexBufferObject.cpp" />
     <ClCompile Include="..\src\VertexBufferObjectIndexed.cpp" />
   </ItemGroup>

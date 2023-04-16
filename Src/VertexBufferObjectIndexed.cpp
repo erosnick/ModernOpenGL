@@ -28,19 +28,6 @@ void VertexBufferObjectIndexed::Release()
 	m_indexData.clear();
 }
 
-// Binds the buffers
-void VertexBufferObjectIndexed::Bind(uint32_t VAO, uint32_t size)
-{
-	glVertexArrayVertexBuffer(
-		VAO,					// vao to bind
-		0,						// Could be 1, 2... if there were several vbo to source.
-		m_vboVertices,			// VBO to bound at "vaoBindingPoint".
-		0,                      // offset of the first element in the buffer hctVBO.
-		size);					// stride == 3 position floats + 3 color floats.
-
-	glVertexArrayElementBuffer(VAO, m_vboIndices);
-}
-
 // Uploads the data to the GPU.  Afterwards, the data can be cleared.  
 // iUsageHint - GL_STATIC_DRAW, GL_DYNAMIC_DRAW...
 void VertexBufferObjectIndexed::UploadDataToGPU(int iUsageHint)

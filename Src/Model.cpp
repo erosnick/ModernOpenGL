@@ -172,7 +172,6 @@ void Mesh::createBuffers()
 	VAO.bind();
 
 	VBOIndexed.Create();
-	VBOIndexed.Bind(VAO.getId(), sizeof(SimpleVertex));
 
 	for (size_t i = 0; i < numVertices; i++)
 	{
@@ -189,12 +188,10 @@ void Mesh::createBuffers()
 
 	VBOIndexed.UploadDataToGPU(GL_DYNAMIC_STORAGE_BIT);
 
-	std::vector<VertexElementLayout> layouts = 
-	{
-		{ 0, 3, GL_FLOAT, offsetof(SimpleVertex, position) },
-		{ 1, 3, GL_FLOAT, offsetof(SimpleVertex, normal) },
-		{ 2, 2, GL_FLOAT, offsetof(SimpleVertex, texcoord) }
-	};
+	VertexBufferLayout layout;
+	layout.push<float>(3);
+	layout.push<float>(3);
+	layout.push<float>(2);
 
-	VAO.setVertexElementLayout(layouts);
+	VAO.addBuffer(VBOIndexed, layout);
 }

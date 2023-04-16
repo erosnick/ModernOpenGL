@@ -70,7 +70,7 @@ void main()
        return;
     }
 
-    vec3 lightColor = vec3(0.3);
+    vec3 lightColor = vec3(0.5);
 
     // ambient
     vec3 ambient = 0.3 * lightColor;

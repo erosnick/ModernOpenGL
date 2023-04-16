@@ -48,6 +48,9 @@
     <ClInclude Include="..\src\VertexArrayObject.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\VertexBufferLayout.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\VertexBufferObject.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -132,6 +135,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\VertexArrayObject.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexBufferLayout.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\VertexBufferObject.cpp">

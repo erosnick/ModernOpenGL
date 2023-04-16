@@ -10,12 +10,14 @@ public:
 	~VertexBufferObjectIndexed();
 
 	void Create();									// Creates a VBO
-	void Bind(uint32_t VAO, uint32_t size);									// Binds the VBO
 	void Release();									// Releases the VBO
 
 	void AddVertexData(const void* pVertexData, uint32_t vertexDataSize);	// Adds vertex data
 	void AddIndexData(const void* pIndexData, uint32_t indexDataSize);	// Adds index data
-	void UploadDataToGPU(int iUsageHint);							// Upload the VBO to the GPU
+	void UploadDataToGPU(int iUsageHint);	
+	// Upload the VBO to the GPU
+	uint32_t getVBO() const { return m_vboVertices; }
+	uint32_t getIBO() const { return m_vboIndices; }
 
 private:
 	uint32_t m_vboVertices = 0;		// VBO id for vertices

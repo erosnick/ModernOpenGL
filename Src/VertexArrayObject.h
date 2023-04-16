@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <vector>
 
-#include "Vertex.h"
-
+#include "VertexBufferLayout.h"
+#include "VertexBufferObjectIndexed.h"
 
 class VertexArrayObject
 {
@@ -15,7 +15,9 @@ public:
 	void create();
 
 	void bind() const;
-	void setVertexElementLayout(const std::vector<VertexElementLayout> layouts);
+	void addBuffer(const VertexBufferObjectIndexed vbo, const VertexBufferLayout& layout);
+	void bindVBO(uint32_t VBO, uint32_t IBO, uint32_t stride) const;
+	void setVertexBufferLayout(const VertexBufferLayout& layout);
 	void unbind() const;
 
 	uint32_t getId() const { return id; }
