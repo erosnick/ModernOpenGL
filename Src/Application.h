@@ -215,8 +215,8 @@ private:
 	const int32 SCREEN_WIDTH = resolutions[0].x;
 	const int32 SCREEN_HEIGHT = resolutions[0].y;
 
-	const int32 SHADOW_WIDTH = 1024;
-	const int32 SHADOW_HEIGHT = 1024;
+	const int32 SHADOW_WIDTH = 2048;
+	const int32 SHADOW_HEIGHT = 2048;
 
 	Camera camera{ glm::vec3(0.0f, 0.0f, 3.0f) };
 

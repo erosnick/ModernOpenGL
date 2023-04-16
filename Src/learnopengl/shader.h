@@ -11,6 +11,23 @@
 
 #include "Log.h"
 
+struct ShaderSource
+{
+	std::string vertexShaderSource;
+	std::string fragmentShaderSource;
+	std::string geometryShaderSource;
+};
+
+enum class ShaderType : int8_t
+{
+	None = -1,
+	Vertex = 0,
+	Fragment = 1,
+	Geometry = 2,
+	TessellationControl = 3,
+	TessellationEvaluation = 4
+};
+
 class Shader
 {
 public:
@@ -26,6 +43,43 @@ public:
     {
         load(vertexPath, fragmentPath, geometryPath);
     }
+
+	ShaderSource parseShader(const std::string& path)
+	{
+		ShaderSource shaderSource;
+
+		std::ifstream shaderFile(path);
+		
+		std::string line;
+		std::stringstream result[3];
+
+		ShaderType shaderType = ShaderType::None;
+
+		while (getline(shaderFile, line))
+		{
+			if (line.find("#shader") != std::string::npos)
+			{
+				if (line.find("vertex") != std::string::npos)
+				{
+					shaderType = ShaderType::Vertex;
+				}
+				else if (line.find("fragment") != std::string::npos)
+				{
+					shaderType = ShaderType::Fragment;
+				}
+				else if (line.find("geometry") != std::string::npos)
+				{
+					shaderType = ShaderType::Geometry;
+				}
+			}
+			else
+			{
+				result[static_cast<int32_t>(shaderType)] << line << '\n';
+			}
+		}
+
+		return { result[0].str(), result[1].str(), result[2].str() };
+	}
 
     void load(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath = std::string())
     {

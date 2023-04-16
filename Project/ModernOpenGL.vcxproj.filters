@@ -15,10 +15,16 @@
     <ClInclude Include="..\src\ComputeShader.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ImGuiLayer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Log.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Model.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OpenGLRenderer.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Random.h">
@@ -34,6 +40,12 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils\root_directory.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Vertex.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\VertexArrayObject.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\VertexBufferObject.h">
@@ -92,6 +104,9 @@
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ImGuiLayer.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Log.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -99,6 +114,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Model.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OpenGLRenderer.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Random.cpp">
@@ -111,6 +129,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils\glDebug.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VertexArrayObject.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\VertexBufferObject.cpp">

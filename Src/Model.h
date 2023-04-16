@@ -10,23 +10,18 @@
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 
+#include "VertexArrayObject.h"
 #include "VertexBufferObjectIndexed.h"
 
-struct SimpleVertex
-{
-	SimpleVertex()
-		: position{},
-		normal{},
-		texcoord{}
-	{}
-
-	glm::vec3 position;
-	glm::vec3 normal;
-	glm::vec2 texcoord;
-};
+#include "Vertex.h"
 
 struct Mesh
 {
+	Mesh() { vertices = {}; };
+	Mesh(const Mesh& other);
+
+	~Mesh() {};
+
 	void addVertex(const SimpleVertex& vertex)
 	{
 		vertices.emplace_back(vertex);
@@ -42,6 +37,22 @@ struct Mesh
 	void createBuffers();
 
 	std::vector<SimpleVertex> vertices;
+
+	union
+	{
+		struct
+		{
+			std::vector<SimpleVertex> vertices;
+		};
+
+		struct
+		{
+			std::vector<glm::vec3> positions;
+			std::vector<glm::vec3> normals;
+			std::vector<glm::vec2> texcoords;
+		};
+	};
+
 	std::vector<uint32_t> indices;
 
 	std::vector<Texture> textures;
@@ -50,11 +61,8 @@ struct Mesh
 	uint32_t numVertices = 0;
 	uint32_t numIndices = 0;
 
-	uint32_t VAO;
-	uint32_t VBO;
-	uint32_t EBO;
-
-	CVertexBufferObjectIndexed VBOIndexed;
+	VertexArrayObject VAO;
+	VertexBufferObjectIndexed VBOIndexed;
 };
 
 struct Model

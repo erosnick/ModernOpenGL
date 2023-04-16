@@ -3,11 +3,11 @@
 #include <cstdint>
 #include <vector>
 
-class CVertexBufferObjectIndexed
+class VertexBufferObjectIndexed
 {
 public:
-	CVertexBufferObjectIndexed();
-	~CVertexBufferObjectIndexed();
+	VertexBufferObjectIndexed();
+	~VertexBufferObjectIndexed();
 
 	void Create();									// Creates a VBO
 	void Bind(uint32_t VAO, uint32_t size);									// Binds the VBO

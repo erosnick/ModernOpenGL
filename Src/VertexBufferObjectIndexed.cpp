@@ -2,24 +2,24 @@
 
 #include <glad/glad.h>
 
-// Constructor -- initialise member variable m_bDataUploaded to false
-CVertexBufferObjectIndexed::CVertexBufferObjectIndexed()
+// Constructor -- initialize member variable m_bDataUploaded to false
+VertexBufferObjectIndexed::VertexBufferObjectIndexed()
 {
 	m_dataUploaded = false;
 }
 
-CVertexBufferObjectIndexed::~CVertexBufferObjectIndexed()
+VertexBufferObjectIndexed::~VertexBufferObjectIndexed()
 {}
 
 // Create buffer objects for the vertices and indices
-void CVertexBufferObjectIndexed::Create()
+void VertexBufferObjectIndexed::Create()
 {
 	glCreateBuffers(1, &m_vboVertices);//uses DSA. This is the way.
 	glCreateBuffers(1, &m_vboIndices);//uses DSA. This is the way.
 }
 
 // Release the buffers and any associated data
-void CVertexBufferObjectIndexed::Release()
+void VertexBufferObjectIndexed::Release()
 {
 	glDeleteBuffers(1, &m_vboVertices);
 	glDeleteBuffers(1, &m_vboIndices);
@@ -29,7 +29,7 @@ void CVertexBufferObjectIndexed::Release()
 }
 
 // Binds the buffers
-void CVertexBufferObjectIndexed::Bind(uint32_t VAO, uint32_t size)
+void VertexBufferObjectIndexed::Bind(uint32_t VAO, uint32_t size)
 {
 	glVertexArrayVertexBuffer(
 		VAO,					// vao to bind
@@ -43,7 +43,7 @@ void CVertexBufferObjectIndexed::Bind(uint32_t VAO, uint32_t size)
 
 // Uploads the data to the GPU.  Afterwards, the data can be cleared.  
 // iUsageHint - GL_STATIC_DRAW, GL_DYNAMIC_DRAW...
-void CVertexBufferObjectIndexed::UploadDataToGPU(int iUsageHint)
+void VertexBufferObjectIndexed::UploadDataToGPU(int iUsageHint)
 {
 	glNamedBufferStorage(m_vboVertices, m_vertexData.size(), &m_vertexData[0], iUsageHint);
 	glNamedBufferStorage(m_vboIndices, m_indexData.size(), &m_indexData[0], iUsageHint);
@@ -54,13 +54,13 @@ void CVertexBufferObjectIndexed::UploadDataToGPU(int iUsageHint)
 }
 
 // Adds data to the VBO.  
-void CVertexBufferObjectIndexed::AddVertexData(const void* ptrVertexData, uint32_t uiVertexDataSize)
+void VertexBufferObjectIndexed::AddVertexData(const void* ptrVertexData, uint32_t uiVertexDataSize)
 {
 	m_vertexData.insert(m_vertexData.end(), (uint8_t*)ptrVertexData, (uint8_t*)ptrVertexData + uiVertexDataSize);
 }
 
 // Adds data to the VBO.  
-void CVertexBufferObjectIndexed::AddIndexData(const void* ptrIndexData, uint32_t uiIndexDataSize)
+void VertexBufferObjectIndexed::AddIndexData(const void* ptrIndexData, uint32_t uiIndexDataSize)
 {
 	m_indexData.insert(m_indexData.end(), (uint8_t*)ptrIndexData, (uint8_t*)ptrIndexData+uiIndexDataSize);
 }
