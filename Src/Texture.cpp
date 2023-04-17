@@ -4,6 +4,21 @@
 #include <stb_image.h>
 
 #include <vector>
+#include <filesystem>
+
+#include "Log.h"
+
+std::string suffixes[] = { "posx", "negx", "posy", "negy", "posz", "negz" };
+
+GLenum targets[] = 
+{
+	GL_TEXTURE_CUBE_MAP_POSITIVE_X,
+	GL_TEXTURE_CUBE_MAP_NEGATIVE_X,
+	GL_TEXTURE_CUBE_MAP_POSITIVE_Y,
+	GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
+	GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
+	GL_TEXTURE_CUBE_MAP_NEGATIVE_Z,
+};
 
 Texture::Texture()
 {
@@ -166,6 +181,56 @@ Texture Texture::load(const std::string &path, const std::string &directory, int
 		glTextureStorage2D(texture.id, 1, GL_RGBA8, texture.width, texture.height);
 		glTextureSubImage2D(texture.id, 0, 0, 0, texture.width, texture.height, GL_RGBA, GL_UNSIGNED_BYTE, data);
 	}
+
+	stbi_image_free(data);
+
+	return texture;
+}
+
+Texture Texture::loadCubemap(const std::string& baseName, int32_t wrapMode, bool hdr)
+{
+	Texture texture;
+
+	glCreateTextures(GL_TEXTURE_CUBE_MAP, 1, &texture.id);
+
+	bool firstTime = true;
+
+	for (int i = 0; i < 6; i++) 
+	{
+		std::string ext = ".png";
+
+		if (hdr) {
+			ext = ".hdr";
+		}
+
+		std::string textureName = std::string(baseName) + "_" + suffixes[i] + ext;
+
+		if (!std::filesystem::exists(textureName)) 
+		{
+			ARIA_CORE_CRITICAL("Texture {0} not found.", textureName);
+			return {};
+		}
+
+		int32_t bpp = 0;
+		uint8_t* data = stbi_load(textureName.c_str(), &texture.width, &texture.height, &bpp, 3);
+
+		if (firstTime)
+		{
+			glTextureStorage2D(texture.id, 1, GL_RGB8, texture.width, texture.height);
+
+			firstTime = false;
+		}
+		
+		glTextureSubImage3D(texture.id, 0, 0, 0, i, texture.width, texture.height, 1, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+		stbi_image_free(data);
+	}
+
+	glTextureParameteri(texture.id, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTextureParameteri(texture.id, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_S, wrapMode);
+	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_T, wrapMode);
+	glTextureParameteri(texture.id, GL_TEXTURE_WRAP_R, wrapMode);
 
 	return texture;
 }

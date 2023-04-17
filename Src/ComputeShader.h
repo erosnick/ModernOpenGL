@@ -26,7 +26,7 @@ public:
 
 	std::vector<float> getComputeData();
 
-	uint32_t getTexture() const { return computeTexture.id; }
+	uint32_t getTexture() const { return computeTexture.getId(); }
 
 private:
 	void checkCompileErrors(uint32_t shader, std::string type);

@@ -229,6 +229,20 @@
       <Outputs>ShaderTriangle.vert.spv</Outputs>
       <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
     </CustomBuild>
+    <CustomBuild Include="Skybox.frag">
+      <FileType>Document</FileType>
+      <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>Skybox.frag.spv</Outputs>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+    </CustomBuild>
+    <CustomBuild Include="Skybox.vert">
+      <FileType>Document</FileType>
+      <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
+"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Command>
+      <Outputs>Skybox.vert.spv</Outputs>
+      <Message>"$(SolutionDir)/ThirdParty/shaderc/glslc.exe" -std=460core --target-env=opengl  -o "$(SolutionDir)/Assets/Shaders/%(Filename)%(Extension).spv" "%(Identity)"</Message>
+    </CustomBuild>
     <CustomBuild Include="Text.frag">
       <FileType>Document</FileType>
       <Command>IF NOT EXIST "$(SolutionDir)\..\Assets\Shaders" (mkdir "$(SolutionDir)\..\Assets\Shaders")
