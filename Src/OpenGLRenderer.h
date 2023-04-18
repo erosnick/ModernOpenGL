@@ -114,15 +114,15 @@ public:
 
 	void renderScene(float deltaTime);
 
-	void renderDirectionalShadowMapScene(const Shader& shader, bool renderDepth = false);
-	void renderPointShadowMapScene(const Shader& shader, bool renderDepth = false);
+	void renderDirectionalShadowMapScene(Shader& shader, bool renderDepth = false);
+	void renderPointShadowMapScene(Shader& shader, bool renderDepth = false);
 
 	void renderGeometry(const Mesh& mesh);
 	void renderWireframeGeometry(const Mesh& mesh);
 
-	void updateObjectShaderUniform(const Shader& shader, Model* object);
-	void updateDirectionalShadowMapUniforms(const Shader& shader);
-	void updatePointShadowMapUniforms(const Shader& shader);
+	void updateObjectShaderUniform(Shader& shader, Model* object);
+	void updateDirectionalShadowMapUniforms(Shader& shader);
+	void updatePointShadowMapUniforms(Shader& shader);
 	void updateDepthMapShaderUniforms(bool perspectiveProjection = false);
 	void updateDepthCubeMapShaderUniforms();
 

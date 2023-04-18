@@ -23,7 +23,7 @@ public:
 
 	std::vector<float> getImageData();
 
-	static Texture load(const std::string &path, const std::string &directory = "", int bpp = 4, bool flipVertically = true);
+	static Texture load(const std::string &path, const std::string &directory = "", int bpp = 4, bool flipVertically = false);
 	static Texture Texture::loadCubemap(const std::string& baseName, int32_t wrapMode = GL_CLAMP_TO_EDGE, bool hdr = false);
 
 	const void use(uint32_t textureUnit = 0) const;
