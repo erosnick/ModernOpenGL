@@ -22,6 +22,8 @@ struct Mesh
 
 	~Mesh() {};
 
+	void use() const { VAO.bind(); }
+
 	void addVertex(const SimpleVertex& vertex)
 	{
 		vertices.emplace_back(vertex);

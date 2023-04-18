@@ -30,6 +30,18 @@
     <ClInclude Include="..\src\Random.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\RenderTexture.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Test.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TestClearColor.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TestTexture.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Texture.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -123,6 +135,18 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Random.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RenderTexture.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Test.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TestClearColor.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TestTexture.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Texture.cpp">

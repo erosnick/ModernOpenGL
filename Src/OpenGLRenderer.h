@@ -1,8 +1,8 @@
 #include <iostream>
 #include <map>
 
-#include <learnopengl/camera.h>
-#include <learnopengl/shader.h>
+#include <learnopengl/Camera.h>
+#include <learnopengl/Shader.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -19,6 +19,8 @@
 #include "Texture.h"
 #include "Model.h"
 #include "ImGuiLayer.h"
+
+#include "Test.h"
 
 using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;
@@ -48,6 +50,7 @@ enum class ERenderMode
 
 enum class ESceneSelection
 {
+	Test,
 	DirectionalShadow,
 	PointShadow
 };
@@ -55,6 +58,9 @@ enum class ESceneSelection
 class OpenGLRenderer
 { 
 public:
+	OpenGLRenderer() {}
+	~OpenGLRenderer();
+
 	void setGLFWWindow(GLFWwindow* inWindow);
 
 	bool startup();
@@ -103,6 +109,8 @@ public:
 	void renderUI();
 
 	void drawSkybox(const glm::mat4& inViewMatrix, const glm::mat4& inProjectionMatrix);
+
+	void drawReflectionCube();
 
 	void renderScene(float deltaTime);
 
@@ -232,6 +240,7 @@ private:
 	Shader pointShadowsShader;
 
 	Shader skyboxShader;
+	Shader reflectionShader;
 
 	Texture albedoTexture;
 	Texture woodTexture;
@@ -272,4 +281,7 @@ private:
 	std::vector<glm::mat4> shadowTransforms;
 
 	ImGuiLayer imGuiLayer;
+
+	Test* currentTest = nullptr;
+	TestMenu* testMenu = nullptr;
 };

@@ -199,7 +199,8 @@ Texture Texture::loadCubemap(const std::string& baseName, int32_t wrapMode, bool
 	{
 		std::string ext = ".png";
 
-		if (hdr) {
+		if (hdr) 
+		{
 			ext = ".hdr";
 		}
 

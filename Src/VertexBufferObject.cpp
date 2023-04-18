@@ -38,7 +38,7 @@ void VertexBufferObject::UploadDataToGPU(int usageHint)
 }
 
 // Adds data to the VBO.  
-void VertexBufferObject::AddData(void* ptrData, uint32_t dataSize)
+void VertexBufferObject::AddData(const void* ptrData, uint32_t dataSize)
 {
 	m_data.insert(m_data.end(), (uint8_t*)ptrData, (uint8_t*)ptrData + dataSize);
 }

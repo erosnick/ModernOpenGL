@@ -18,5 +18,7 @@ void main() {
 
 	texcoord = inTexcoord;
 
-	gl_Position = projection * view * model * vec4(inPosition, 1.0);
+	vec4 position = projection * view * model * vec4(inPosition, 1.0);
+
+	gl_Position = position.xyww;
 }

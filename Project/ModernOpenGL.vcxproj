@@ -193,6 +193,10 @@
     <ClInclude Include="..\src\Model.h" />
     <ClInclude Include="..\src\OpenGLRenderer.h" />
     <ClInclude Include="..\src\Random.h" />
+    <ClInclude Include="..\src\RenderTexture.h" />
+    <ClInclude Include="..\src\Test.h" />
+    <ClInclude Include="..\src\TestClearColor.h" />
+    <ClInclude Include="..\src\TestTexture.h" />
     <ClInclude Include="..\src\Texture.h" />
     <ClInclude Include="..\src\Utils\GeometryGenerator.h" />
     <ClInclude Include="..\src\Utils\glDebug.h" />
@@ -226,6 +230,10 @@
     <ClCompile Include="..\src\Model.cpp" />
     <ClCompile Include="..\src\OpenGLRenderer.cpp" />
     <ClCompile Include="..\src\Random.cpp" />
+    <ClCompile Include="..\src\RenderTexture.cpp" />
+    <ClCompile Include="..\src\Test.cpp" />
+    <ClCompile Include="..\src\TestClearColor.cpp" />
+    <ClCompile Include="..\src\TestTexture.cpp" />
     <ClCompile Include="..\src\Texture.cpp" />
     <ClCompile Include="..\src\Utils\GeometryGenerator.cpp" />
     <ClCompile Include="..\src\Utils\glDebug.cpp" />
