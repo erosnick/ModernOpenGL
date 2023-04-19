@@ -20,6 +20,10 @@
 #include "Model.h"
 #include "ImGuiLayer.h"
 
+#include "RenderTexture.h"
+#include "DepthTexture.h"
+#include "DepthCubeMap.h"
+
 #include "Test.h"
 
 using uint16 = std::uint16_t;
@@ -187,13 +191,10 @@ private:
 	uint32 rayMarchingVAO;
 	uint32 rayMarchingVBO;
 
-	uint32 colorFBO;
-	uint32 depthMapFBO;
-	uint32 depthCubeMapFBO;
+	DepthTexture depthTexture;
+	DepthCubeMap depthCubeMap;
 
-	uint32 renderToTexture;
-	uint32 depthMap;
-	uint32 depthCubeMap;
+	RenderTexture renderTexture;
 
 	// Our state
 	bool showDemoWindow = true;

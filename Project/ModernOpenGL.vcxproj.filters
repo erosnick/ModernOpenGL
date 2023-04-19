@@ -15,6 +15,12 @@
     <ClInclude Include="..\src\ComputeShader.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\DepthCubeMap.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DepthTexture.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\ImGuiLayer.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -114,6 +120,12 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ComputeShader.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DepthCubeMap.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DepthTexture.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp">

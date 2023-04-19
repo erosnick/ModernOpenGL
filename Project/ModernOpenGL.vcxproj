@@ -188,6 +188,8 @@
   <ItemGroup>
     <ClInclude Include="..\src\Application.h" />
     <ClInclude Include="..\src\ComputeShader.h" />
+    <ClInclude Include="..\src\DepthCubeMap.h" />
+    <ClInclude Include="..\src\DepthTexture.h" />
     <ClInclude Include="..\src\ImGuiLayer.h" />
     <ClInclude Include="..\src\Log.h" />
     <ClInclude Include="..\src\Model.h" />
@@ -223,6 +225,8 @@
     <ClCompile Include="..\ThirdParty\GLAD\glad.c" />
     <ClCompile Include="..\src\Application.cpp" />
     <ClCompile Include="..\src\ComputeShader.cpp" />
+    <ClCompile Include="..\src\DepthCubeMap.cpp" />
+    <ClCompile Include="..\src\DepthTexture.cpp" />
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="..\src\ImGuiLayer.cpp" />
     <ClCompile Include="..\src\Log.cpp" />
