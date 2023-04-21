@@ -52,25 +52,28 @@ project "ModernOpenGL"
     language "C++"                          --工程采用的语言，Premake5.0当前支持C、C++、C#
     dependson { "Shaders" }
     location "Project"
+
+	pchheader "AriaPCH.h"
+	pchsource "src/AriaAPCH.cpp"
+
     files 
     { 
         "src/**.h", 
         "src/**.cpp",
-        './ThirdParty/GLAD/glad.c',
     }                                       --指定加载哪些文件或哪些类型的文件
 
-    vpaths 
-    {
-        -- ["Headers/*"] = { "*.h", "*.hpp" },  --包含具体路径
-        -- ["Sources/*"] = { "*.c", "*.cpp" },  --包含具体路径
-        ["Headers"] = { "**.h", "**.hpp" },     --不包含具体路径
-        ["Sources"] = { "**.c", "**.cpp" },     --不包含具体路径
-        ["Docs"] = "**.md"
-    }
+    -- vpaths 
+    -- {
+    --     -- ["Headers/*"] = { "*.h", "*.hpp" },  --包含具体路径
+    --     -- ["Sources/*"] = { "*.c", "*.cpp" },  --包含具体路径
+    --     ["Headers"] = { "**.h", "**.hpp" },     --不包含具体路径
+    --     ["Sources"] = { "**.c", "**.cpp" },     --不包含具体路径
+    --     ["Docs"] = "**.md"
+    -- }
 
     --Debug配置项属性
     filter "configurations:Debug"
-        defines { "DEBUG", "FMT_HEADER_ONLY" }                 --定义Debug宏(这可以算是默认配置)
+        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_CORE_PLATFORM_WINDOW" }                 --定义Debug宏(这可以算是默认配置)
         symbols "On"                                           --开启调试符号
         debugdir "%{wks.location}"
 
@@ -79,7 +82,7 @@ project "ModernOpenGL"
             './Src',
             './Src/Utils',
             './ThirdParty/stb',
-            './ThirdParty/GLAD',
+            './ThirdParty/GLAD/include',
             './ThirdParty/imgui-1.89.2',
             './ThirdParty/tinyobjloader',
             './ThirdParty/Assimp/include',
@@ -102,6 +105,7 @@ project "ModernOpenGL"
 		links 
         { 
             "ImGui",
+		    "GLAD",
             "glfw3.lib", 
             "freetype.lib",
             "assimp-vc143-mt.lib"
@@ -109,7 +113,7 @@ project "ModernOpenGL"
 
     --Release配置项属性
     filter "configurations:Release"
-        defines { "NDEBUG", "FMT_HEADER_ONLY" }                 --定义NDebug宏(这可以算是默认配置)
+        defines { "NDEBUG", "ARIA_CORE_RELEASE", "ARIA_CORE_PLATFORM_WINDOW" }                 --定义NDebug宏(这可以算是默认配置)
         optimize "On"                                           --开启优化参数
         debugdir "%{wks.location}"
 
@@ -118,7 +122,7 @@ project "ModernOpenGL"
             './Src',
             './Src/Utils',
             './ThirdParty/stb',
-            './ThirdParty/GLAD',
+            './ThirdParty/GLAD/include',
             './ThirdParty/imgui-1.89.2',
             './ThirdParty/Assimp/include',
             './ThirdParty/spdlog/include', 
@@ -141,6 +145,7 @@ project "ModernOpenGL"
 		links 
         { 
             "ImGui",
+		    "GLAD",
             "glfw3.lib",
             "freetype.lib",
             "assimp-vc143-mt.lib"

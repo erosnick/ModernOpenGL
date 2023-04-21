@@ -1,8 +1,8 @@
+#include "AriaPCH.h"
+
 #include "ComputeShader.h"
 
 #include <glad/glad.h>
-
-#include "Log.h"
 
 ComputeShader::ComputeShader(const glm::uvec2& inWorkSize)
 	: ID(), workSize{ inWorkSize }

@@ -1,9 +1,8 @@
+#include "AriaPCH.h"
+
 #include "DepthCubeMap.h"
 
 #include <glad/glad.h>
-#include <vector>
-
-#include "Log.h"
 
 DepthCubeMap::DepthCubeMap()
 {

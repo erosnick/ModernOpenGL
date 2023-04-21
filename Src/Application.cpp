@@ -1,3 +1,5 @@
+#include "AriaPCH.h"
+
 #include "Application.h"
 
 #include <GLFW/glfw3.h>

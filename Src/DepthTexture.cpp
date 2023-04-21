@@ -1,10 +1,8 @@
+#include "AriaPCH.h"
+
 #include "DepthTexture.h"
 
 #include <glad/glad.h>
-
-#include <vector>
-
-#include "Log.h"
 
 DepthTexture::DepthTexture()
 {

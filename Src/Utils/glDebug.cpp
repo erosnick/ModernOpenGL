@@ -1,17 +1,9 @@
+#include "AriaPCH.h"
+
 #include <glad/glad.h>
 #include <iostream>
 
-#include "Log.h"
-
-#ifdef ARIA_CORE_DEBUG
-#define ARIA_CORE_ENABLE_ASSERTS
-#endif
-
-#ifdef ARIA_CORE_ENABLE_ASSERTS
-#define ARIA_CORE_ASSERT(x, ...) { if(!(x)) { ARIA_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#else
-#define ARIA_CORE_ASSERT(x, ...)
-#endif
+#include "Core.h"
 
 void APIENTRY glDebugOutput(GLenum source,
 	GLenum type,
