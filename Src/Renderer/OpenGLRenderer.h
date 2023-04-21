@@ -1,8 +1,8 @@
 #include <iostream>
 #include <map>
 
-#include <learnopengl/Camera.h>
-#include <learnopengl/Shader.h>
+#include "Camera.h"
+#include "Shader.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -24,7 +24,7 @@
 #include "DepthTexture.h"
 #include "DepthCubeMap.h"
 
-#include "Test.h"
+#include "Test/Test.h"
 
 using uint16 = std::uint16_t;
 using uint32 = std::uint32_t;

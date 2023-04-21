@@ -1,9 +1,8 @@
 #include "AriaPCH.h"
 
-#include <glad/glad.h>
-#include <iostream>
+#include "Core/Core.h"
 
-#include "Core.h"
+#include <glad/glad.h>
 
 void APIENTRY glDebugOutput(GLenum source,
 	GLenum type,

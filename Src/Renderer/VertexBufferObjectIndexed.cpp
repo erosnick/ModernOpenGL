@@ -1,3 +1,5 @@
+#include "AriaPCH.h"
+
 #include "VertexBufferObjectIndexed.h"
 
 #include <glad/glad.h>

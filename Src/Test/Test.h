@@ -4,7 +4,6 @@
 #include <vector>
 #include <functional>
 
-#include "Log.h"
 #include <learnopengl/Shader.h>
 
 class Test

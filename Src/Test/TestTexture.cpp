@@ -1,10 +1,12 @@
+#include "AriaPCH.h"
+
 #include "TestTexture.h"
 
 #include <glad/glad.h>
 
 #include <imgui.h>
 
-#include "Vertex.h"
+#include "Renderer/Vertex.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 

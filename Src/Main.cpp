@@ -1,3 +1,5 @@
+#include "AriaPCH.h"
+
 /**
  * Hello colorful triangle
  *
@@ -10,7 +12,7 @@
  *
  * @author ludo456 / the opensourcedev @github
  */
-#include "Application.h"
+#include "Core/Application.h"
 
 int main()
 {	

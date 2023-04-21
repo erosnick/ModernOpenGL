@@ -1,3 +1,5 @@
+#include "AriaPCH.h"
+
 #include "TestClearColor.h"
 
 #include <glad/glad.h>

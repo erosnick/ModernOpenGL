@@ -54,7 +54,7 @@ project "ModernOpenGL"
     location "Project"
 
 	pchheader "AriaPCH.h"
-	pchsource "src/AriaAPCH.cpp"
+	pchsource "src/AriaPCH.cpp"
 
     files 
     { 
@@ -73,7 +73,7 @@ project "ModernOpenGL"
 
     --Debug配置项属性
     filter "configurations:Debug"
-        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_CORE_PLATFORM_WINDOW" }                 --定义Debug宏(这可以算是默认配置)
+        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
         symbols "On"                                           --开启调试符号
         debugdir "%{wks.location}"
 
@@ -113,7 +113,7 @@ project "ModernOpenGL"
 
     --Release配置项属性
     filter "configurations:Release"
-        defines { "NDEBUG", "ARIA_CORE_RELEASE", "ARIA_CORE_PLATFORM_WINDOW" }                 --定义NDebug宏(这可以算是默认配置)
+        defines { "NDEBUG", "ARIA_CORE_RELEASE", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
         optimize "On"                                           --开启优化参数
         debugdir "%{wks.location}"
 

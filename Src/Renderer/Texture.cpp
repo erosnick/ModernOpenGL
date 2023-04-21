@@ -1,12 +1,9 @@
+#include "AriaPCH.h"
+
 #include "Texture.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
-
-#include <vector>
-#include <filesystem>
-
-#include "Log.h"
 
 std::string suffixes[] = { "posx", "negx", "posy", "negy", "posz", "negz" };
 

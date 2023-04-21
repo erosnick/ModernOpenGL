@@ -1,3 +1,5 @@
+#include "AriaPCH.h"
+
 #include "GeometryGenerator.h"
 
 std::vector<SimpleVertex> GeometryGenerator::toSimpleVertices(const std::vector<Vertex>& vertices)

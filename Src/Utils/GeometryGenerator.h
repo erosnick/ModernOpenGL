@@ -4,7 +4,7 @@
 #include <glm/gtc/constants.hpp>
 #include <vector>
 
-#include "Model.h"
+#include "Renderer/Model.h"
 
 class GeometryGenerator 
 {

@@ -4,8 +4,6 @@
 
 #include <glad/glad.h>
 
-#include "VertexBufferLayout.h"
-
 struct SimpleVertex
 {
 	SimpleVertex()

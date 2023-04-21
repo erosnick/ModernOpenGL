@@ -1,3 +1,5 @@
+#include "AriaPCH.h"
+
 #include "Random.h"
 
 namespace Walnut {

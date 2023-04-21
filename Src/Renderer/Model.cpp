@@ -1,8 +1,6 @@
+#include "AriaPCH.h"
+
 #include "Model.h"
-
-#include <iostream>
-
-#include "Log.h"
 
 void Model::load(const std::string& path)
 {

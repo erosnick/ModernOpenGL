@@ -1,9 +1,9 @@
+#include "AriaPCH.h"
+
 #include "RenderTexture.h"
 
 #include <glad/glad.h>
 #include <vector>
-
-#include "Log.h"
 
 RenderTexture::RenderTexture()
 {

@@ -5,14 +5,14 @@
 #include <utility>
 #include <algorithm>
 #include <functional>
-
+#include <filesystem>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Log.h"
+#include "Core/Log.h"
 
 #ifdef ARIA_CORE_PLATFORM_WINDOWS
 	#include <Windows.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "OpenGLRenderer.h"
+#include "Renderer/OpenGLRenderer.h"
 
 class Application
 {

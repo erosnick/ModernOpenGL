@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Events">
       <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
     </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{45DC8C7C-3113-8E0D-DAFF-7310C6150A0F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{F68B420E-62A0-6ABF-2B22-0E1F97F566F0}</UniqueIdentifier>
@@ -15,12 +24,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\Application.h" />
     <ClInclude Include="..\src\AriaPCH.h" />
-    <ClInclude Include="..\src\ComputeShader.h" />
-    <ClInclude Include="..\src\Core.h" />
-    <ClInclude Include="..\src\DepthCubeMap.h" />
-    <ClInclude Include="..\src\DepthTexture.h" />
+    <ClInclude Include="..\src\Core\Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Core.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Log.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Events\ApplicationEvent.h">
       <Filter>Events</Filter>
     </ClInclude>
@@ -36,16 +52,61 @@
     <ClInclude Include="..\src\ImGui\ImGuiLayer.h">
       <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Log.h" />
-    <ClInclude Include="..\src\Model.h" />
-    <ClInclude Include="..\src\OpenGLRenderer.h" />
-    <ClInclude Include="..\src\Random.h" />
-    <ClInclude Include="..\src\RenderTexture.h" />
-    <ClInclude Include="..\src\Test.h" />
-    <ClInclude Include="..\src\TestClearColor.h" />
-    <ClInclude Include="..\src\TestTexture.h" />
-    <ClInclude Include="..\src\Texture.h" />
+    <ClInclude Include="..\src\Renderer\ComputeShader.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\DepthCubeMap.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\DepthTexture.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\Model.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\OpenGLRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\RenderTexture.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\Shader.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\Texture.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\Vertex.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\VertexArrayObject.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\VertexBufferLayout.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\VertexBufferObject.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Test\Test.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Test\TestClearColor.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Test\TestTexture.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\Camera.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Utils\GeometryGenerator.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Utils\Random.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Utils\glDebug.h">
@@ -54,12 +115,6 @@
     <ClInclude Include="..\src\Utils\root_directory.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Vertex.h" />
-    <ClInclude Include="..\src\VertexArrayObject.h" />
-    <ClInclude Include="..\src\VertexBufferLayout.h" />
-    <ClInclude Include="..\src\VertexBufferObject.h" />
-    <ClInclude Include="..\src\VertexBufferObjectIndexed.h" />
-    <ClInclude Include="..\src\Window.h" />
     <ClInclude Include="..\src\learnopengl\Shader.h">
       <Filter>learnopengl</Filter>
     </ClInclude>
@@ -98,36 +153,70 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Application.cpp" />
     <ClCompile Include="..\src\AriaPCH.cpp" />
-    <ClCompile Include="..\src\ComputeShader.cpp" />
-    <ClCompile Include="..\src\DepthCubeMap.cpp" />
-    <ClCompile Include="..\src\DepthTexture.cpp" />
+    <ClCompile Include="..\src\Core\Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Log.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ImGui\ImGuiLayer.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Log.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
-    <ClCompile Include="..\src\Model.cpp" />
-    <ClCompile Include="..\src\OpenGLRenderer.cpp" />
-    <ClCompile Include="..\src\Random.cpp" />
-    <ClCompile Include="..\src\RenderTexture.cpp" />
-    <ClCompile Include="..\src\Test.cpp" />
-    <ClCompile Include="..\src\TestClearColor.cpp" />
-    <ClCompile Include="..\src\TestTexture.cpp" />
-    <ClCompile Include="..\src\Texture.cpp" />
+    <ClCompile Include="..\src\Renderer\ComputeShader.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\DepthCubeMap.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\DepthTexture.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Model.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\OpenGLRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\RenderTexture.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Texture.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\VertexArrayObject.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\VertexBufferLayout.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\VertexBufferObject.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\VertexBufferObjectIndexed.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Test\Test.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Test\TestClearColor.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Test\TestTexture.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Utils\GeometryGenerator.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utils\Random.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils\glDebug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\VertexArrayObject.cpp" />
-    <ClCompile Include="..\src\VertexBufferLayout.cpp" />
-    <ClCompile Include="..\src\VertexBufferObject.cpp" />
-    <ClCompile Include="..\src\VertexBufferObjectIndexed.cpp" />
   </ItemGroup>
 </Project>
