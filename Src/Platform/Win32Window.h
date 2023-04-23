@@ -26,9 +26,14 @@ namespace AriaCore
 		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
+		virtual void updateFPSCounter();
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+
+		int32_t frameCount = 0;
+
+		float frameTime = 0.0f;
 	
 		struct WindowData
 		{

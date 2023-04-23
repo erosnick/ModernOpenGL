@@ -7,6 +7,22 @@
 // layout(location = 0) in vec3 normal;
 // layout(location = 1) in vec2 uv;
 
+const float kPi = 3.14159265;
+const float kShininess = 32.0;
+
+struct Light
+{
+    vec3 position;
+    vec3 direction;
+
+    float cutOff;
+    float outerCutOff;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
 layout (location = 0) in VSOut
 {
   vec3 fragPosition;
@@ -23,8 +39,8 @@ layout(location = 5, binding = 1) uniform sampler2D depthMap;
 layout(location = 6) uniform int useTexture;
 layout(location = 7) uniform int renderDepth;
 layout(location = 8) uniform int isWireframe;
-layout(location = 9) uniform vec3 lightPosition;
-layout(location = 10) uniform vec3 viewPosition;
+layout(location = 9) uniform vec3 viewPosition;
+layout(location = 10) uniform Light lights[];
 
 float ShadowCalculation(vec4 fragPosLightSpace)
 {
@@ -38,7 +54,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     float currentDepth = projectCoords.z;
     // calculate bias (based on depth map resolution and slope)
     vec3 normal = normalize(vsOut.normal);
-    vec3 lightDir = normalize(lightPosition - vsOut.fragPosition);
+    vec3 lightDir = normalize(lights[0].position - vsOut.fragPosition);
     float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
     // check whether current frag pos is in shadow
     // float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
@@ -62,6 +78,77 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     return shadow;
 }
 
+vec3 blinnPhong(vec3 normal, vec3 lightDirection, vec3 lightColor)
+{
+    vec3 diffuse = max(dot(normal, lightDirection), 0.0) * lightColor;
+
+    // specular
+    vec3 viewDirection = normalize(viewPosition - vsOut.fragPosition);
+    vec3 halfwayDirection = normalize(lightDirection + viewDirection);
+
+    const float kEnergyConservation = (8.0 + kShininess ) / (8.0 * kPi); 
+
+    // https://www.rorydriscoll.com/2009/01/25/energy-conservation-in-games/
+    vec3 specular = kEnergyConservation * pow(max(dot(normal, halfwayDirection), 0.0), kShininess) * lightColor;
+
+    return diffuse + specular;
+}
+
+float computeAttenuation(Light light, vec3 fragPosition)
+{
+    // attenuation
+    float distance    = length(light.position - vsOut.fragPosition);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
+
+    return attenuation;
+}
+
+float spotLightIntensity(Light light, vec3 toLight)
+{
+    // spotlight (soft edges)
+    float theta = dot(toLight, normalize(-light.direction));
+    float epsilon = (light.cutOff - light.outerCutOff);
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+
+    return intensity;
+}
+
+vec3 computeSpotLight(Light light, vec3 normal, vec3 lightColor)
+{
+    vec3 lightDirection = normalize(light.position - vsOut.fragPosition);
+
+    vec3 result = blinnPhong(normal, lightDirection, lightColor);
+
+    float intensity = spotLightIntensity(light, lightDirection);
+
+    result *= intensity;
+
+    return result;
+}
+
+vec3 computePointLight(Light light, vec3 normal, vec3 lightColor)
+{
+    vec3 lightDirection = normalize(light.position - vsOut.fragPosition);
+
+    vec3 result = blinnPhong(normal, lightDirection, lightColor);
+
+    // attenuation
+    float attenuation = computeAttenuation(light, vsOut.fragPosition);
+
+    result *= attenuation;
+
+    return result;
+}
+
+vec3 computeDirectionalLight(Light light, vec3 normal, vec3 lightColor)
+{
+    vec3 lightDirection = normalize(-light.direction);
+
+    vec3 result = blinnPhong(normal, lightDirection, lightColor);
+
+    return result;
+}
+
 void main()
 {
     if (isWireframe == 1)
@@ -76,16 +163,18 @@ void main()
     vec3 ambient = 0.3 * lightColor;
 
     vec3 normal = normalize(vsOut.normal);
-    // vec3 l = normalize(vec3(0.9, 0.8, 1.0));
-    vec3 lightDirection = normalize(lightPosition - vsOut.fragPosition);
 
-    vec3 diffuse = max(dot(normal, lightDirection), 0.0) * lightColor;
+    vec3 lighting = computeDirectionalLight(lights[0], normal, lightColor);
 
-    // specular
-    vec3 viewDirection = normalize(viewPosition - vsOut.fragPosition);
-    vec3 reflectDirection = reflect(-lightDirection, normal);
-    vec3 halfwayDirection = normalize(lightDirection + viewDirection);
-    vec3 specular = pow(max(dot(normal, halfwayDirection), 0.0), 64.0) * lightColor;
+    // calculate shadow
+    float shadow = ShadowCalculation(vsOut.fragPositionLightSpace);
+
+    vec3 spotLight = computeSpotLight(lights[1], normal, lightColor);
+
+    // attenuation
+    float attenuation = computeAttenuation(lights[0], vsOut.fragPosition);
+
+    lighting *= attenuation;
 
     vec4 albedoColor = texture(albedoTexture, vsOut.uv);
     
@@ -93,17 +182,10 @@ void main()
     {
        albedoColor = texture(albedoTexture, vsOut.uv);
     }
-
-    // calculate shadow
-    float shadow = ShadowCalculation(vsOut.fragPositionLightSpace); 
     
-    vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * albedoColor.rgb;
-    fragColor = vec4(lighting, 1.0);
-    // fragColor = vec4(vec3(diffuse), 1.0);
-    // fragColor = vec4(vec3(shadow), 1.0);
-    // fragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    lighting = (ambient + (1.0 - shadow) * lighting) * albedoColor.rgb;
 
-    // fragColor = albedoColor;
+    fragColor = vec4(lighting, 1.0);
 
     if (renderDepth == 1)
     {

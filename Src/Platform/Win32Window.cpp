@@ -160,6 +160,26 @@ namespace AriaCore
 		});
 	}
 
+	void Win32Window::updateFPSCounter()
+	{
+		static double previousSeconds = glfwGetTime();
+		double currentSeconds = glfwGetTime();
+		double elapsedSeconds = currentSeconds - previousSeconds;
+
+		frameTime = static_cast<float>(elapsedSeconds);
+
+		if (elapsedSeconds >= 0.25)
+		{
+			previousSeconds = currentSeconds;
+			double fps = (double)frameCount / elapsedSeconds;
+			auto temp = fmt::format("OpenGL [FPS: {0}]", static_cast<float>(fps));
+			glfwSetWindowTitle(m_Window, temp.c_str());
+			frameCount = 0;
+		}
+
+		frameCount++;
+	}
+
 	void Win32Window::Shutdown()
 	{
 		// glfw: terminate, clearing all previously allocated GLFW resources.
@@ -170,6 +190,7 @@ namespace AriaCore
 
 	void Win32Window::OnUpdate()
 	{
+		updateFPSCounter();
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}

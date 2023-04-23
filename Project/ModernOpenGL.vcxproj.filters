@@ -88,6 +88,9 @@
     <ClInclude Include="..\src\Renderer\DepthTexture.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Renderer\Light.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Renderer\Model.h">
       <Filter>Renderer</Filter>
     </ClInclude>

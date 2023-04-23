@@ -15,7 +15,7 @@ namespace AriaCore
 		Application() {}
 		virtual ~Application() {}
 
-		bool initGL();
+		bool init();
 
 		bool startup();
 		void run();
@@ -24,8 +24,6 @@ namespace AriaCore
 		static void framebufferSizeCallback(GLFWwindow* inWindow, int32 width, int32 height);
 
 		void processInput();
-
-		void updateFPSCounter(GLFWwindow* window);
 
 		void onEvent(Event& event);
 
@@ -39,7 +37,7 @@ namespace AriaCore
 	private:
 		static Application* s_Instance;
 
-		OpenGLRenderer renderer;
+		AriaRenderer::OpenGLRenderer renderer;
 		GLFWwindow* glfwWindow = nullptr;
 
 		std::unique_ptr<Window> window;
@@ -50,10 +48,6 @@ namespace AriaCore
 		static glm::vec2 lastMousePosition;
 
 		static float FrameTime;
-
-		int32 frameCount = 0;
-
-		float frameTime = 0.0f;
 
 		std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
 

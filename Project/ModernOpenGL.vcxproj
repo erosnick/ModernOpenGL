@@ -211,6 +211,7 @@
     <ClInclude Include="..\src\Renderer\ComputeShader.h" />
     <ClInclude Include="..\src\Renderer\DepthCubeMap.h" />
     <ClInclude Include="..\src\Renderer\DepthTexture.h" />
+    <ClInclude Include="..\src\Renderer\Light.h" />
     <ClInclude Include="..\src\Renderer\Model.h" />
     <ClInclude Include="..\src\Renderer\OpenGLRenderer.h" />
     <ClInclude Include="..\src\Renderer\RenderTexture.h" />

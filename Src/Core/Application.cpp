@@ -31,7 +31,7 @@ namespace AriaCore
 	
 	float Application::FrameTime = 0.0166667f;
 	
-	bool Application::initGL()
+	bool Application::init()
 	{
 		if (!s_Instance)
 		{
@@ -54,7 +54,7 @@ namespace AriaCore
 	
 	bool Application::startup()
 	{
-		return initGL() && renderer.startup();
+		return init() && renderer.startup();
 	}
 	
 	void Application::run()
@@ -76,11 +76,10 @@ namespace AriaCore
 				// -----
 				renderer.update();
 				processInput();
-				window->OnUpdate();
 			}
 	
-			updateFPSCounter(glfwWindow);
 			renderer.run();
+			window->OnUpdate();
 		}
 	
 		renderer.imGuiShutdown();
@@ -88,7 +87,7 @@ namespace AriaCore
 	
 	void Application::framebufferSizeCallback(GLFWwindow* inWindow, int32 width, int32 height)
 	{
-		auto renderer = reinterpret_cast<OpenGLRenderer*>(glfwGetWindowUserPointer(inWindow));
+		auto renderer = reinterpret_cast<AriaRenderer::OpenGLRenderer*>(glfwGetWindowUserPointer(inWindow));
 	
 		// make sure the viewport matches the new window dimensions; note that width and
 		// height will be significantly larger than specified on retina displays.
@@ -126,26 +125,6 @@ namespace AriaCore
 		{
 			renderer.getCamera().ProcessKeyboard(DOWN, FrameTime);
 		}
-	}
-	
-	void Application::updateFPSCounter(GLFWwindow* window)
-	{
-		static double previousSeconds = glfwGetTime();
-		double currentSeconds = glfwGetTime();
-		double elapsedSeconds = currentSeconds - previousSeconds;
-	
-		frameTime = static_cast<float>(elapsedSeconds);
-	
-		if (elapsedSeconds >= 0.25)
-		{
-			previousSeconds = currentSeconds;
-			double fps = (double)frameCount / elapsedSeconds;
-			auto temp = fmt::format("OpenGL [FPS: {0}]", static_cast<float>(fps));
-			glfwSetWindowTitle(window, temp.c_str());
-			frameCount = 0;
-		}
-	
-		frameCount++;
 	}
 
 	void Application::onEvent(Event& event)
@@ -231,10 +210,10 @@ namespace AriaCore
 					renderer.toggleTexture();
 					break;
 				case ARIA_KEY_1:
-					renderer.setRenderMode(ERenderMode::Rasterizing);
+					renderer.setRenderMode(AriaRenderer::ERenderMode::Rasterizing);
 					break;
 				case ARIA_KEY_2:
-					renderer.setRenderMode(ERenderMode::RayTracing);
+					renderer.setRenderMode(AriaRenderer::ERenderMode::RayTracing);
 					break;
 				case ARIA_KEY_3:
 					renderer.toggleRenderDepth();
@@ -243,10 +222,10 @@ namespace AriaCore
 					renderer.toggleDebugDepth();
 					break;
 				case ARIA_KEY_KP_1:
-					renderer.scene = ESceneSelection::DirectionalShadow;
+					renderer.scene = AriaRenderer::ESceneSelection::DirectionalShadow;
 					break;
 				case ARIA_KEY_KP_2:
-					renderer.scene = ESceneSelection::PointShadow;
+					renderer.scene = AriaRenderer::ESceneSelection::PointShadow;
 					break;
 				default:
 					break;
