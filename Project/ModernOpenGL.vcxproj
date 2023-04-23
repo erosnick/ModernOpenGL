@@ -193,13 +193,21 @@
     <ClInclude Include="..\src\AriaPCH.h" />
     <ClInclude Include="..\src\Core\Application.h" />
     <ClInclude Include="..\src\Core\Core.h" />
+    <ClInclude Include="..\src\Core\Input.h" />
+    <ClInclude Include="..\src\Core\KeyCodes.h" />
+    <ClInclude Include="..\src\Core\Layer.h" />
+    <ClInclude Include="..\src\Core\LayerStack.h" />
     <ClInclude Include="..\src\Core\Log.h" />
+    <ClInclude Include="..\src\Core\MouseButtonCodes.h" />
+    <ClInclude Include="..\src\Core\Timestep.h" />
     <ClInclude Include="..\src\Core\Window.h" />
     <ClInclude Include="..\src\Events\ApplicationEvent.h" />
     <ClInclude Include="..\src\Events\Event.h" />
     <ClInclude Include="..\src\Events\KeyEvent.h" />
     <ClInclude Include="..\src\Events\MouseEvent.h" />
     <ClInclude Include="..\src\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="..\src\Platform\Win32Input.h" />
+    <ClInclude Include="..\src\Platform\Win32Window.h" />
     <ClInclude Include="..\src\Renderer\ComputeShader.h" />
     <ClInclude Include="..\src\Renderer\DepthCubeMap.h" />
     <ClInclude Include="..\src\Renderer\DepthTexture.h" />
@@ -219,6 +227,7 @@
     <ClInclude Include="..\src\Utils\Camera.h" />
     <ClInclude Include="..\src\Utils\GeometryGenerator.h" />
     <ClInclude Include="..\src\Utils\Random.h" />
+    <ClInclude Include="..\src\Utils\Timer.h" />
     <ClInclude Include="..\src\Utils\glDebug.h" />
     <ClInclude Include="..\src\Utils\root_directory.h" />
     <ClInclude Include="..\src\learnopengl\Shader.h" />
@@ -239,10 +248,14 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\Core\Application.cpp" />
+    <ClCompile Include="..\src\Core\Layer.cpp" />
+    <ClCompile Include="..\src\Core\LayerStack.cpp" />
     <ClCompile Include="..\src\Core\Log.cpp" />
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="..\src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Platform\Win32Input.cpp" />
+    <ClCompile Include="..\src\Platform\Win32Window.cpp" />
     <ClCompile Include="..\src\Renderer\ComputeShader.cpp" />
     <ClCompile Include="..\src\Renderer\DepthCubeMap.cpp" />
     <ClCompile Include="..\src\Renderer\DepthTexture.cpp" />

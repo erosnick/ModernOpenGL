@@ -10,6 +10,9 @@
     <Filter Include="ImGui">
       <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
     </Filter>
@@ -31,7 +34,25 @@
     <ClInclude Include="..\src\Core\Core.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Core\Input.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\KeyCodes.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Layer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\LayerStack.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Core\Log.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\MouseButtonCodes.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Timestep.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Core\Window.h">
@@ -51,6 +72,12 @@
     </ClInclude>
     <ClInclude Include="..\src\ImGui\ImGuiLayer.h">
       <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Platform\Win32Input.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Platform\Win32Window.h">
+      <Filter>Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Renderer\ComputeShader.h">
       <Filter>Renderer</Filter>
@@ -109,6 +136,9 @@
     <ClInclude Include="..\src\Utils\Random.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Utils\Timer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Utils\glDebug.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -157,6 +187,12 @@
     <ClCompile Include="..\src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Core\Layer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\LayerStack.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Core\Log.cpp">
       <Filter>Core</Filter>
     </ClCompile>
@@ -167,6 +203,12 @@
       <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Platform\Win32Input.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Platform\Win32Window.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Renderer\ComputeShader.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>

@@ -73,6 +73,8 @@ public:
 
 	void setViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 
+	void updateProjectionMatrix();
+
 	void setupDebugCallback();
 
 	bool checkDSASupport();

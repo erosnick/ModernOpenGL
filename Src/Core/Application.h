@@ -2,50 +2,68 @@
 
 #include "Renderer/OpenGLRenderer.h"
 
-class Application
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
+
+#include "Window.h"
+
+namespace AriaCore
 {
-public:
-	Application() {}
-	~Application() {}
+	class Application
+	{
+	public:
+		Application() {}
+		virtual ~Application() {}
 
-	bool initGLFW();
+		bool initGL();
 
-	bool startup();
-	void run();
+		bool startup();
+		void run();
 
-	// Forward declarations
-	static void framebufferSizeCallback(GLFWwindow* inWindow, int32 width, int32 height);
-	static void keyCallback(GLFWwindow* inWindow, int32 key, int32 scancode, int32 action, int32 mods);
-	static void mouseMoveCallback(GLFWwindow* inWindow, double xpos, double ypos);
-	static void mouseScrollCallback(GLFWwindow* inWindow, double xoffset, double yoffset);
-	static void mouseButtonCallback(GLFWwindow* inWindow, int32_t button, int32_t action, int32_t mods);
+		// Forward declarations
+		static void framebufferSizeCallback(GLFWwindow* inWindow, int32 width, int32 height);
 
-	void processInput(GLFWwindow* inWindow);
+		void processInput();
 
-	void setupGLFWCallbacks();
+		void updateFPSCounter(GLFWwindow* window);
 
-	void updateFPSCounter(GLFWwindow* window);
-private:
-	OpenGLRenderer renderer;
-	GLFWwindow* window = nullptr;
+		void onEvent(Event& event);
 
-	static bool rightMouseButtonDown;
-	static bool middleMouseButtonDown;
+		inline Window& GetWindow() { return *window; }
 
-	static glm::vec2 lastMousePosition;
+		inline static Application& Get() { return *s_Instance; }
 
-	static float FrameTime;
+	private:
+		bool onWindowClose(WindowCloseEvent& e);
 
-	int32 frameCount = 0;
+	private:
+		static Application* s_Instance;
 
-	float frameTime = 0.0f;
+		OpenGLRenderer renderer;
+		GLFWwindow* glfwWindow = nullptr;
 
-	std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
+		std::unique_ptr<Window> window;
 
-	// settings
-	const int32 SCREEN_WIDTH = resolutions[0].x;
-	const int32 SCREEN_HEIGHT = resolutions[0].y;
+		static bool rightMouseButtonDown;
+		static bool middleMouseButtonDown;
 
-	const int32 SHADOW_WIDTH = 2048;
-	const int32 SHADOW_HEIGHT = 2048;
-};
+		static glm::vec2 lastMousePosition;
+
+		static float FrameTime;
+
+		int32 frameCount = 0;
+
+		float frameTime = 0.0f;
+
+		std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
+
+		// settings
+		const int32 SCREEN_WIDTH = resolutions[0].x;
+		const int32 SCREEN_HEIGHT = resolutions[0].y;
+
+		const int32 SHADOW_WIDTH = 2048;
+		const int32 SHADOW_HEIGHT = 2048;
+
+		bool running = true;
+	};
+}

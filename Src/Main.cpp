@@ -16,7 +16,7 @@
 
 int main()
 {	
-    Application app;
+    AriaCore::Application app;
 
     if (app.startup())
     {
