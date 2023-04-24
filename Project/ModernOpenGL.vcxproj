@@ -255,6 +255,7 @@
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="..\src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Mono\MonoTest.cpp" />
     <ClCompile Include="..\src\Platform\Win32Input.cpp" />
     <ClCompile Include="..\src\Platform\Win32Window.cpp" />
     <ClCompile Include="..\src\Renderer\ComputeShader.cpp" />

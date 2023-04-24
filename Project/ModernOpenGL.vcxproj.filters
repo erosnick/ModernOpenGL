@@ -10,6 +10,9 @@
     <Filter Include="ImGui">
       <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mono">
+      <UniqueIdentifier>{7E2F897C-6A66-8A0D-1353-7010FF68060F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
@@ -206,6 +209,9 @@
       <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Mono\MonoTest.cpp">
+      <Filter>Mono</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Platform\Win32Input.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
