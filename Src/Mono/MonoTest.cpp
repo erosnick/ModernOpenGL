@@ -1,13 +1,14 @@
 ﻿// MonoTest.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-#include <mono/jit/jit.h>
-#include <mono/metadata/assembly.h>
-#include <mono/metadata/debug-helpers.h>
+#include "AriaPCH.h"
+
+#include "MonoWrapper.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include <memory>
 
 struct Component
 {
@@ -15,13 +16,13 @@ struct Component
 	int32_t tag;
 };
 
-MonoDomain* monoDomain = nullptr;
-MonoClass* componentClass = nullptr;
-MonoClassField* nativeHandleField = nullptr;
-
 uint32_t numComponents = 5;
 
 Component* components = nullptr;
+
+std::unique_ptr<MonoWrapper> monoWrapper;
+
+bool initGLFW();
 
 int32_t CLassLibrary_Component_GetInternalId(const Component* component)
 {
@@ -31,26 +32,31 @@ int32_t CLassLibrary_Component_GetInternalId(const Component* component)
 int32_t CLassLibrary_Component_get_Tag(MonoObject* thisPtr)
 {
 	Component* component;
-	mono_field_get_value(thisPtr, nativeHandleField, reinterpret_cast<void*>(&component));
+	mono_field_get_value(thisPtr, monoWrapper->getClassField("Component", "handle"), reinterpret_cast<void*>(&component));
 	return component->tag;
 }
 
 MonoArray* ClassLibrary_Component_GetComponents()
 {
-	MonoArray* array = mono_array_new(monoDomain, componentClass, numComponents);
+	MonoArray* objectArray = monoWrapper->instantiateClassArray("ClassLibrary", "Component", numComponents);
 
 	for (uint32_t i = 0; i < numComponents; i++)
 	{
-		MonoObject* object = mono_object_new(monoDomain, componentClass);
-		mono_runtime_object_init(object);
+		// Allocate an instance of our class
+		MonoObject* object = monoWrapper->instantiateClass("ClassLibrary", "Component");
 
 		void* nativeHandleValue = &components[i];
 
-		mono_field_set_value(object, nativeHandleField, &nativeHandleValue);
-		mono_array_set(array, MonoObject*, i, object);
+		monoWrapper->setFieldValue(object, std::string("Component"), std::string("handle"), &nativeHandleValue);
+		monoWrapper->setArrayValue<MonoObject*>(objectArray, i, object);
 	}
 
-	return array;
+	return objectArray;
+}
+
+void ClassLibrary_Game_InitGLFW()
+{
+	initGLFW();
 }
 
 bool initGLFW()
@@ -77,66 +83,38 @@ bool initGLFW()
 		return false;
 	}
 
+	std::cout << "GFLW initialized successfully" << std::endl;
+
 	return true;
 }
 
 int main()
 {
-	mono_set_dirs("./ThirdParty/mono/lib", "./ThirdParty/mono/lib");
+	monoWrapper = std::make_unique<MonoWrapper>("./ThirdParty/mono/lib", "MonoTest", "ClassLibrary.dll");
+	monoWrapper->createClass("ClassLibrary", "Component");
 
-	monoDomain = mono_jit_init("MonoTest");
+	components = new Component[5];
 
-	MonoAssembly* gameAssembly = nullptr;
-	MonoImage* gameImage = nullptr;
-
-	if (monoDomain != nullptr)
+	for (uint32_t i = 0; i < numComponents; ++i)
 	{
-		gameAssembly = mono_domain_assembly_open(monoDomain, "ClassLibrary.dll");
-
-		if (gameAssembly != nullptr)
-		{
-			gameImage = mono_assembly_get_image(gameAssembly);
-
-			if (gameImage != nullptr)
-			{
-				//MonoClass* testClass = mono_class_from_name(gameImage, "ClassLibrary", "TestClass");
-
-				//MonoMethodDesc* entryPointMethodDesc = mono_method_desc_new("ClassLibrary.TestClass:Call()", true);
-
-				//MonoMethod* entryPointMethod = mono_method_desc_search_in_class(entryPointMethodDesc, testClass);
-				//mono_method_desc_free(entryPointMethodDesc);
-
-				//mono_runtime_invoke(entryPointMethod, nullptr, nullptr, nullptr);
-
-				componentClass = mono_class_from_name(gameImage, "ClassLibrary", "Component");
-
-				nativeHandleField = mono_class_get_field_from_name(componentClass, "handle");
-
-				components = new Component[5];
-
-				for (uint32_t i = 0; i < numComponents; ++i)
-				{
-					components[i].id = i;
-					components[i].tag = i * 4;
-				}
-
-				mono_add_internal_call("ClassLibrary.Component::GetInternalId", reinterpret_cast<void*>(CLassLibrary_Component_GetInternalId));
-				mono_add_internal_call("ClassLibrary.Component::get_Tag", reinterpret_cast<void*>(CLassLibrary_Component_get_Tag));
-				mono_add_internal_call("ClassLibrary.Component::GetComponents", reinterpret_cast<void*>(ClassLibrary_Component_GetComponents));
-			
-				MonoClass* mainClass = mono_class_from_name(gameImage, "ClassLibrary", "Main");
-
-				MonoMethodDesc* entryPointMethodDesc = mono_method_desc_new("ClassLibrary.Main:TestComponent()", true);
-
-				MonoMethod* entryPointMethod = mono_method_desc_search_in_class(entryPointMethodDesc, mainClass);
-				mono_method_desc_free(entryPointMethodDesc);
-
-				mono_runtime_invoke(entryPointMethod, nullptr, nullptr, nullptr);
-			}
-		}
+		components[i].id = i;
+		components[i].tag = i * 4;
 	}
 
-	mono_jit_cleanup(monoDomain);
+	monoWrapper->registerMethod("ClassLibrary.Component::GetInternalId", reinterpret_cast<void*>(CLassLibrary_Component_GetInternalId));
+	monoWrapper->registerMethod("ClassLibrary.Component::get_Tag", reinterpret_cast<void*>(CLassLibrary_Component_get_Tag));
+	monoWrapper->registerMethod("ClassLibrary.Component::GetComponents", reinterpret_cast<void*>(ClassLibrary_Component_GetComponents));
+
+	monoWrapper->createClass("ClassLibrary", "Main");
+
+	monoWrapper->invokeStaticMethod("Main", "TestComponent");
+
+	monoWrapper->createClass("ClassLibrary", "IGame");
+	monoWrapper->createClass("ClassLibrary", "GameMain");
+
+	monoWrapper->registerMethod("ClassLibrary.Game::InitGLFW", reinterpret_cast<void*>(ClassLibrary_Game_InitGLFW));
+
+	monoWrapper->invokeInstanceMethod("IGame", "Init");
 
 	delete[] components;
 }

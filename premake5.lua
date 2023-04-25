@@ -62,6 +62,12 @@ project "ModernOpenGL"
         "src/**.cpp",
     }                                       --指定加载哪些文件或哪些类型的文件
 
+    excludes 
+    { 
+        "src/Mono/**.h", 
+        "src/Mono/**.cpp", 
+    }
+
     -- vpaths 
     -- {
     --     -- ["Headers/*"] = { "*.h", "*.hpp" },  --包含具体路径
@@ -73,7 +79,7 @@ project "ModernOpenGL"
 
     --Debug配置项属性
     filter "configurations:Debug"
-        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
+        defines { "DEBUG", "ARIA_DEBUG", "ARIA_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
         symbols "On"                                           --开启调试符号
         debugdir "%{wks.location}"
 
@@ -90,6 +96,7 @@ project "ModernOpenGL"
             './ThirdParty/glm-0.9.9.8/glm',
             './ThirdParty/FreeType2/Includes',
             './ThirdParty/Optick_1.4.0/include',
+            "./ThirdParty/Mono/include/mono-2.0",
             './ThirdParty/rapidobj-1.0.1/include',
             './ThirdParty/glfw-3.3.8.bin.WIN64/include',
             './ThirdParty/easy_profiler-v2.1.0-msvc15-win64/include',
@@ -97,6 +104,7 @@ project "ModernOpenGL"
 
 		libdirs 
         { 
+            "./ThirdParty/Mono/Lib",
             './ThirdParty/Assimp/lib/x64',
             './ThirdParty/FreeType2/Libs',
             './ThirdParty/glfw-3.3.8.bin.WIN64/lib-vc2022',
@@ -108,12 +116,13 @@ project "ModernOpenGL"
 		    "GLAD",
             "glfw3.lib", 
             "freetype.lib",
+            "mono-2.0-sgen.lib",
             "assimp-vc143-mt.lib"
         }
 
     --Release配置项属性
     filter "configurations:Release"
-        defines { "NDEBUG", "ARIA_CORE_RELEASE", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
+        defines { "NDEBUG", "ARIA_RELEASE", "ARIA_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
         optimize "On"                                           --开启优化参数
         debugdir "%{wks.location}"
 
@@ -130,6 +139,7 @@ project "ModernOpenGL"
             './ThirdParty/glm-0.9.9.8/glm',
             './ThirdParty/FreeType2/Includes',
             './ThirdParty/Optick_1.4.0/include',
+            "./ThirdParty/Mono/include/mono-2.0",
             './ThirdParty/rapidobj-1.0.1/include',
             './ThirdParty/glfw-3.3.8.bin.WIN64/include',
             './ThirdParty/easy_profiler-v2.1.0-msvc15-win64/include',
@@ -137,6 +147,7 @@ project "ModernOpenGL"
 
 		libdirs 
         { 
+            "./ThirdParty/Mono/Lib",
             './ThirdParty/Assimp/lib/x64',
             './ThirdParty/FreeType2/Libs',
             './ThirdParty/glfw-3.3.8.bin.WIN64/lib-vc2022',
@@ -148,6 +159,7 @@ project "ModernOpenGL"
 		    "GLAD",
             "glfw3.lib",
             "freetype.lib",
+            "mono-2.0-sgen.lib",
             "assimp-vc143-mt.lib"
         }
 
@@ -173,7 +185,7 @@ project "MonoTest"
 
     --Debug配置项属性
     filter "configurations:Debug"
-        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
+        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
         symbols "On"                                           --开启调试符号
         debugdir "%{wks.location}"
 
@@ -217,7 +229,7 @@ project "MonoTest"
 
     --Release配置项属性
     filter "configurations:Release"
-        defines { "NDEBUG", "ARIA_CORE_RELEASE", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
+        defines { "NDEBUG", "ARIA_RELEASE", "ARIA_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
         optimize "On"                                           --开启优化参数
         debugdir "%{wks.location}"
 
@@ -283,13 +295,13 @@ project "ClassLibrary"
 
     --Debug配置项属性
     filter "configurations:Debug"
-        defines { "DEBUG", "ARIA_CORE_DEBUG", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
+        defines { "DEBUG", "ARIA_DEBUG", "ARIA_PLATFORM_WINDOWS" }                 --定义Debug宏(这可以算是默认配置)
         symbols "On"                                           --开启调试符号
         debugdir "%{wks.location}"
 
     --Release配置项属性
     filter "configurations:Release"
-        defines { "NDEBUG", "ARIA_CORE_RELEASE", "ARIA_CORE_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
+        defines { "NDEBUG", "ARIA_RELEASE", "ARIA_PLATFORM_WINDOWS" }                 --定义NDebug宏(这可以算是默认配置)
         optimize "On"                                           --开启优化参数
         debugdir "%{wks.location}"
 

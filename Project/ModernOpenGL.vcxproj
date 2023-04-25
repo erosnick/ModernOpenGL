@@ -98,8 +98,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>AriaPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;ARIA_CORE_DEBUG;ARIA_CORE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\tinyobjloader;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;ARIA_DEBUG;ARIA_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\tinyobjloader;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\Mono\include\mono-2.0;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -108,8 +108,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;freetype.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;mono-2.0-sgen.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\Mono\Lib;..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
@@ -120,8 +120,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>AriaPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;ARIA_CORE_DEBUG;ARIA_CORE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\tinyobjloader;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;ARIA_DEBUG;ARIA_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\tinyobjloader;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\Mono\include\mono-2.0;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -130,8 +130,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;freetype.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;mono-2.0-sgen.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\Mono\Lib;..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
@@ -142,8 +142,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>AriaPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;ARIA_CORE_RELEASE;ARIA_CORE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\tinyobjloader;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;ARIA_RELEASE;ARIA_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\tinyobjloader;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\Mono\include\mono-2.0;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -156,8 +156,8 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;freetype.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;mono-2.0-sgen.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\Mono\Lib;..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
@@ -168,8 +168,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>AriaPCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;ARIA_CORE_RELEASE;ARIA_CORE_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\tinyobjloader;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;ARIA_RELEASE;ARIA_PLATFORM_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Src;..\Src\Utils;..\ThirdParty\stb;..\ThirdParty\GLAD\include;..\ThirdParty\imgui-1.89.2;..\ThirdParty\Assimp\include;..\ThirdParty\spdlog\include;..\ThirdParty\tinyobjloader;..\ThirdParty\glm-0.9.9.8\glm;..\ThirdParty\FreeType2\Includes;..\ThirdParty\Optick_1.4.0\include;..\ThirdParty\Mono\include\mono-2.0;..\ThirdParty\rapidobj-1.0.1\include;..\ThirdParty\glfw-3.3.8.bin.WIN64\include;..\ThirdParty\easy_profiler-v2.1.0-msvc15-win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -182,8 +182,8 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3.lib;freetype.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;mono-2.0-sgen.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\Mono\Lib;..\ThirdParty\Assimp\lib\x64;..\ThirdParty\FreeType2\Libs;..\ThirdParty\glfw-3.3.8.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
@@ -222,6 +222,7 @@
     <ClInclude Include="..\src\Renderer\VertexBufferLayout.h" />
     <ClInclude Include="..\src\Renderer\VertexBufferObject.h" />
     <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h" />
+    <ClInclude Include="..\src\Scripting\ScriptingEngine.h" />
     <ClInclude Include="..\src\Test\Test.h" />
     <ClInclude Include="..\src\Test\TestClearColor.h" />
     <ClInclude Include="..\src\Test\TestTexture.h" />
@@ -255,7 +256,6 @@
     <ClCompile Include="..\src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="..\src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
-    <ClCompile Include="..\src\Mono\MonoTest.cpp" />
     <ClCompile Include="..\src\Platform\Win32Input.cpp" />
     <ClCompile Include="..\src\Platform\Win32Window.cpp" />
     <ClCompile Include="..\src\Renderer\ComputeShader.cpp" />
@@ -269,6 +269,7 @@
     <ClCompile Include="..\src\Renderer\VertexBufferLayout.cpp" />
     <ClCompile Include="..\src\Renderer\VertexBufferObject.cpp" />
     <ClCompile Include="..\src\Renderer\VertexBufferObjectIndexed.cpp" />
+    <ClCompile Include="..\src\Scripting\ScriptingEngine.cpp" />
     <ClCompile Include="..\src\Test\Test.cpp" />
     <ClCompile Include="..\src\Test\TestClearColor.cpp" />
     <ClCompile Include="..\src\Test\TestTexture.cpp" />

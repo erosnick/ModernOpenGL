@@ -21,7 +21,7 @@
     <OutputPath>..\bin\Debug_Win32\</OutputPath>
     <BaseIntermediateOutputPath>..\obj\Debug_Win32\Win32\Debug\ClassLibrary\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>DEBUG;ARIA_CORE_DEBUG;ARIA_CORE_PLATFORM_WINDOWS</DefineConstants>
+    <DefineConstants>DEBUG;ARIA_DEBUG;ARIA_PLATFORM_WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -33,7 +33,7 @@
     <OutputPath>..\bin\Debug_x64\</OutputPath>
     <BaseIntermediateOutputPath>..\obj\Debug_x64\x64\Debug\ClassLibrary\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>DEBUG;ARIA_CORE_DEBUG;ARIA_CORE_PLATFORM_WINDOWS</DefineConstants>
+    <DefineConstants>DEBUG;ARIA_DEBUG;ARIA_PLATFORM_WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <OutputPath>..\bin\Release_Win32\</OutputPath>
     <BaseIntermediateOutputPath>..\obj\Release_Win32\Win32\Release\ClassLibrary\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>NDEBUG;ARIA_CORE_RELEASE;ARIA_CORE_PLATFORM_WINDOWS</DefineConstants>
+    <DefineConstants>NDEBUG;ARIA_RELEASE;ARIA_PLATFORM_WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -57,7 +57,7 @@
     <OutputPath>..\bin\Release_x64\</OutputPath>
     <BaseIntermediateOutputPath>..\obj\Release_x64\x64\Release\ClassLibrary\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>NDEBUG;ARIA_CORE_RELEASE;ARIA_CORE_PLATFORM_WINDOWS</DefineConstants>
+    <DefineConstants>NDEBUG;ARIA_RELEASE;ARIA_PLATFORM_WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>

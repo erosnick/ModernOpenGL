@@ -10,14 +10,14 @@
     <Filter Include="ImGui">
       <UniqueIdentifier>{C0FF640D-2C14-8DBE-F595-301E616989EF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mono">
-      <UniqueIdentifier>{7E2F897C-6A66-8A0D-1353-7010FF68060F}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting">
+      <UniqueIdentifier>{985A7358-04C5-27CF-4D03-D974B9AC0524}</UniqueIdentifier>
     </Filter>
     <Filter Include="Test">
       <UniqueIdentifier>{45DC8C7C-3113-8E0D-DAFF-7310C6150A0F}</UniqueIdentifier>
@@ -124,6 +124,9 @@
     <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Scripting\ScriptingEngine.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Test\Test.h">
       <Filter>Test</Filter>
     </ClInclude>
@@ -209,9 +212,6 @@
       <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Main.cpp" />
-    <ClCompile Include="..\src\Mono\MonoTest.cpp">
-      <Filter>Mono</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Platform\Win32Input.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
@@ -250,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Renderer\VertexBufferObjectIndexed.cpp">
       <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scripting\ScriptingEngine.cpp">
+      <Filter>Scripting</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Test\Test.cpp">
       <Filter>Test</Filter>
