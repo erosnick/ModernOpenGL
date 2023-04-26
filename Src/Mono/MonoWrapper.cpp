@@ -2,62 +2,63 @@
 
 #include "MonoWrapper.h"
 
+#include <fstream>
+
+#include "Core/Core.h"
+
 MonoDomain* MonoWrapper::monoDomain = nullptr;
 MonoDomain* MonoWrapper::monoAppDomain = nullptr;
 
-MonoWrapper::MonoWrapper(const std::string& monoAssemblyDir, const std::string& domainName, const std::string& assemblyName)
+MonoWrapper::MonoWrapper(const std::string& monoAssemblyDir, const std::string& domainName, const std::string& assemblyPath)
 {
 	//mono_set_dirs(monoAssemblyDir.c_str(), monoAssemblyDir.c_str());
 
 	mono_set_assemblies_path(monoAssemblyDir.c_str());
 
 	monoDomain = mono_jit_init(domainName.c_str());
+	ARIA_CORE_ASSERT(monoDomain);
 
-	if (monoDomain != nullptr)
-	{
-		// Create an App Domain
-		monoAppDomain =  mono_domain_create_appdomain("MonoTestAppDomain", nullptr);
-		mono_domain_set(monoAppDomain, true);
+	// Create an App Domain
+	monoAppDomain = mono_domain_create_appdomain("MonoTestAppDomain", nullptr);
+	mono_domain_set(monoAppDomain, true);
 
-		gameAssembly = mono_domain_assembly_open(monoDomain, assemblyName.c_str());
+	//gameAssembly = mono_domain_assembly_open(monoAppDomain, assemblyPath.c_str());
 
-		if (gameAssembly != nullptr)
-		{
-			printAssemblyTypes(gameAssembly);
-			gameImage = mono_assembly_get_image(gameAssembly);
-		}
-	}
+	gameAssembly = loadCSharpAssembly(assemblyPath);
+
+	ARIA_CORE_ASSERT(gameAssembly);
+
+	printAssemblyTypes(gameAssembly);
+	//gameImage = mono_assembly_get_image(gameAssembly);
 }
 
 MonoWrapper::~MonoWrapper()
 {
 	mono_jit_cleanup(monoDomain);
+	mono_jit_cleanup(monoAppDomain);
 }
 
 MonoClass* MonoWrapper::createClass(const std::string& inNameSpace, const std::string& name)
 {
-	MonoClass* monoClass = nullptr;
+	Class classInfo = getClass(name);
 
-	if (gameImage != nullptr)
+	if (classInfo.monoClass == nullptr)
 	{
-		Class classInfo = getClass(name);
+		MonoImage* image = mono_assembly_get_image(gameAssembly);
 
-		if (classInfo.monoClass == nullptr)
-		{
-			MonoClass* monoClass = mono_class_from_name(gameImage, inNameSpace.c_str(), name.c_str());
+		MonoClass* monoClass = mono_class_from_name(image, inNameSpace.c_str(), name.c_str());
 
-			Class classInfo;
-			classInfo.name = name;
-			classInfo.monoClass = monoClass;
-			classInfo.nameSpace = inNameSpace;
+		Class classInfo;
+		classInfo.name = name;
+		classInfo.monoClass = monoClass;
+		classInfo.nameSpace = inNameSpace;
 
-			classes[name] = classInfo;
+		classes[name] = classInfo;
 
-			nativeHandleField = mono_class_get_field_from_name(monoClass, "handle");
-		}
+		nativeHandleField = mono_class_get_field_from_name(monoClass, "handle");
 	}
 
-	return monoClass;
+	return classInfo.monoClass;
 }
 
 MonoObject* MonoWrapper::instantiateClass(const char* namespaceName, const char* className)
@@ -72,10 +73,7 @@ MonoObject* MonoWrapper::instantiateClass(const char* namespaceName, const char*
 	// Secondly we pass the actual class that we want to allocate an instance of.
 	MonoObject* classInstance = mono_object_new(monoAppDomain, monoClass);
 
-	if (classInstance == nullptr)
-	{
-		// Log error here and abort
-	}
+	ARIA_CORE_ASSERT(classInstance);
 
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
@@ -120,30 +118,25 @@ void MonoWrapper::invokeInstanceMethod(const std::string& className, const std::
 
 	MonoMethod* gameMainMethod = findMethod("GameMain", "CreateGame");
 
-	if (gameMainMethod != nullptr)
-	{
-		MonoObject* gameObject = mono_runtime_invoke(gameMainMethod, nullptr, nullptr, nullptr);
+	ARIA_CORE_ASSERT(gameMainMethod);
 
-		uint32_t gameObjectGCHandle = mono_gchandle_new(gameObject, false);
+	MonoObject* gameObject = mono_runtime_invoke(gameMainMethod, nullptr, nullptr, nullptr);
 
-		std::string fullMethodName = gameClassInfo.getClassName() + ":" + name + "()";
+	uint32_t gameObjectGCHandle = mono_gchandle_new(gameObject, false);
 
-		MonoMethodDesc* fooMethodDesc = mono_method_desc_new(fullMethodName.c_str(), true);
+	std::string fullMethodName = gameClassInfo.getClassName() + ":" + name + "()";
 
-		if (fooMethodDesc != nullptr)
-		{
-			MonoMethod* virtualMethod = mono_method_desc_search_in_class(fooMethodDesc, gameClassInfo.monoClass);
+	MonoMethodDesc* fooMethodDesc = mono_method_desc_new(fullMethodName.c_str(), true);
+	ARIA_CORE_ASSERT(fooMethodDesc);
 
-			if (virtualMethod != nullptr)
-			{
-				MonoMethod* fooMethod = mono_object_get_virtual_method(gameObject, virtualMethod);
+	MonoMethod* virtualMethod = mono_method_desc_search_in_class(fooMethodDesc, gameClassInfo.monoClass);
+	ARIA_CORE_ASSERT(virtualMethod);
 
-				mono_runtime_invoke(fooMethod, gameObject, nullptr, nullptr);
-			}
+	MonoMethod* fooMethod = mono_object_get_virtual_method(gameObject, virtualMethod);
 
-			mono_method_desc_free(fooMethodDesc);
-		}
-	}
+	mono_runtime_invoke(fooMethod, gameObject, nullptr, nullptr);
+
+	mono_method_desc_free(fooMethodDesc);
 }
 
 MonoMethod* MonoWrapper::findMethod(const std::string& className, const std::string& name)
@@ -151,14 +144,13 @@ MonoMethod* MonoWrapper::findMethod(const std::string& className, const std::str
 	auto findResult = methods.find(name);
 
 	MonoMethod* method = nullptr;
+
 	if (findResult != methods.end())
 	{
 		method = methods.find(name)->second.method;
 
-		if (method != nullptr)
-		{
-			return method;
-		}
+		ARIA_CORE_ASSERT(method);
+		return method;
 	}
 
 	Class classInfo = getClass(className);
@@ -166,20 +158,16 @@ MonoMethod* MonoWrapper::findMethod(const std::string& className, const std::str
 	std::string fullMethodName = classInfo.getClassName() + ":" + name + "()";
 
 	MonoMethodDesc* methodDesc = mono_method_desc_new(fullMethodName.c_str(), true);
-	
-	if (methodDesc != nullptr)
-	{
-		method = mono_method_desc_search_in_class(methodDesc, classInfo.monoClass);
+	ARIA_CORE_ASSERT(methodDesc);
 
-		if (method != nullptr)
-		{
-			Method methodInfo;
-			methodInfo.name = name;
-			methodInfo.className = className;
-			methodInfo.method = method;
-			methods[name] = methodInfo;
-		}
-	}
+	method = mono_method_desc_search_in_class(methodDesc, classInfo.monoClass);
+	ARIA_CORE_ASSERT(method);
+
+	Method methodInfo;
+	methodInfo.name = name;
+	methodInfo.className = className;
+	methodInfo.method = method;
+	methods[name] = methodInfo;
 
 	return method;
 }
@@ -187,13 +175,12 @@ MonoMethod* MonoWrapper::findMethod(const std::string& className, const std::str
 MonoClassField* MonoWrapper::getClassField(const std::string& className, const std::string& name) const
 {
 	MonoClass* monoClass = classes.at(className).monoClass;
+	ARIA_CORE_ASSERT(monoClass);
 
 	MonoClassField* classField = nullptr;
 
-	if (monoClass != nullptr)
-	{
-		classField = mono_class_get_field_from_name(monoClass, name.c_str());
-	}
+	classField = mono_class_get_field_from_name(monoClass, name.c_str());
+	ARIA_CORE_ASSERT(classField);
 
 	return classField;
 }
@@ -232,4 +219,57 @@ void MonoWrapper::printAssemblyTypes(MonoAssembly * assembly)
 
 		printf("%s.%s\n", nameSpace, name);
 	}
+}
+
+MonoAssembly* MonoWrapper::loadCSharpAssembly(const std::string& assemblyPath)
+{
+	uint32_t fileSize = 0;
+	char* fileData = readBytes(assemblyPath, &fileSize);
+
+	// NOTE: We can't use this image for anything other than loading the assembly because this image doesn't have a reference to the assembly
+	MonoImageOpenStatus status;
+	MonoImage* image = mono_image_open_from_data_full(fileData, fileSize, 1, &status, 0);
+
+	if (status != MONO_IMAGE_OK)
+	{
+		const char* errorMessage = mono_image_strerror(status);
+		// Log some error message using the errorMessage data
+		return nullptr;
+	}
+
+	MonoAssembly* assembly = mono_assembly_load_from_full(image, assemblyPath.c_str(), &status, 0);
+	mono_image_close(image);
+
+	// Don't forget to free the file data
+	delete[] fileData;
+
+	return assembly;
+}
+
+char* MonoWrapper::readBytes(const std::string& filepath, uint32_t* outSize)
+{
+	std::ifstream stream(filepath, std::ios::binary | std::ios::ate);
+
+	if (!stream)
+	{
+		// Failed to open the file
+		return nullptr;
+	}
+
+	std::streampos end = stream.tellg();
+	stream.seekg(0, std::ios::beg);
+	uint32_t size = static_cast<uint32_t>(end - stream.tellg());
+
+	if (size == 0)
+	{
+		// File is empty
+		return nullptr;
+	}
+
+	char* buffer = new char[size];
+	stream.read((char*)buffer, size);
+	stream.close();
+
+	*outSize = size;
+	return buffer;
 }
