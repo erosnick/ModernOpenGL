@@ -35,7 +35,6 @@ MonoWrapper::MonoWrapper(const std::string& monoAssemblyDir, const std::string& 
 MonoWrapper::~MonoWrapper()
 {
 	mono_jit_cleanup(monoDomain);
-	mono_jit_cleanup(monoAppDomain);
 }
 
 MonoClass* MonoWrapper::createClass(const std::string& inNameSpace, const std::string& name)
@@ -65,6 +64,7 @@ MonoObject* MonoWrapper::instantiateClass(const char* namespaceName, const char*
 {
 	// Get a reference to the class we want to instantiate
 	MonoClass* monoClass = getClass(className).monoClass;
+	ARIA_CORE_ASSERT(monoClass);
 
 	// Allocate an instance of our class
 	// first we pass the AppDomain that we created when we initialized Mono, 
@@ -72,11 +72,13 @@ MonoObject* MonoWrapper::instantiateClass(const char* namespaceName, const char*
 	// AppDomain we explicitly created.
 	// Secondly we pass the actual class that we want to allocate an instance of.
 	MonoObject* classInstance = mono_object_new(monoAppDomain, monoClass);
-
 	ARIA_CORE_ASSERT(classInstance);
 
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
+
+	// 如果要调用有参的构造函数，和调用普通函数一样，通过mono_class_get_method_from_name()
+	// 进行获取，然后调用
 
 	return classInstance;
 }
@@ -105,6 +107,9 @@ void MonoWrapper::invokeStaticMethod(const std::string& className, const std::st
 	MonoMethodDesc* entryPointMethodDesc = mono_method_desc_new(fullMethodName.c_str(), true);
 
 	MonoMethod* entryPointMethod = mono_method_desc_search_in_class(entryPointMethodDesc, classInfo.monoClass);
+	entryPointMethod = mono_class_get_method_from_name(classInfo.monoClass, name.c_str(), 0);
+	ARIA_CORE_ASSERT(entryPointMethod);
+
 	mono_method_desc_free(entryPointMethodDesc);
 
 	mono_runtime_invoke(entryPointMethod, nullptr, nullptr, nullptr);
@@ -130,6 +135,7 @@ void MonoWrapper::invokeInstanceMethod(const std::string& className, const std::
 	ARIA_CORE_ASSERT(fooMethodDesc);
 
 	MonoMethod* virtualMethod = mono_method_desc_search_in_class(fooMethodDesc, gameClassInfo.monoClass);
+	virtualMethod = mono_class_get_method_from_name(gameClassInfo.monoClass, name.c_str(), 0);
 	ARIA_CORE_ASSERT(virtualMethod);
 
 	MonoMethod* fooMethod = mono_object_get_virtual_method(gameObject, virtualMethod);
@@ -161,6 +167,7 @@ MonoMethod* MonoWrapper::findMethod(const std::string& className, const std::str
 	ARIA_CORE_ASSERT(methodDesc);
 
 	method = mono_method_desc_search_in_class(methodDesc, classInfo.monoClass);
+	method = mono_class_get_method_from_name(classInfo.monoClass, name.c_str(), 0);
 	ARIA_CORE_ASSERT(method);
 
 	Method methodInfo;
