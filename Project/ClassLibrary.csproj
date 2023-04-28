@@ -106,6 +106,7 @@
     <Compile Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Include="..\src\Mono\Managed\TestClass.cs">
       <Link>src\Mono\Managed\TestClass.cs</Link>
     </Compile>
+    <Compile Include="src\Mono\Managed\Test.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

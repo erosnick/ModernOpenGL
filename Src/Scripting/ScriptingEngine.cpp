@@ -126,7 +126,44 @@ namespace AriaCore
 
 		auto assembly = loadCSharpAssembly("Assets/Scripts/ClassLibrary.dll");
 
-		ARIA_CORE_INFO("Mono test.");
+		ARIA_CORE_INFO("printAssemblyTypes");
 		printAssemblyTypes(assembly);
+
+		MonoImage* image = mono_assembly_get_image(assembly);
+
+		MonoClass* monoClass = mono_class_from_name(image, "ClassLibrary", "Test");
+		ARIA_CORE_ASSERT(monoClass);
+
+		MonoObject* object = mono_object_new(data->appDomain, monoClass);
+
+		// Call the parameterless (default) constructor
+		// 如果要调用有参的构造函数，和调用普通函数一样，通过mono_class_get_method_from_name()
+		// 进行获取，然后调用
+		mono_runtime_object_init(object);
+
+		ARIA_CORE_INFO("Call Test.printMessage()");
+
+		MonoMethod* printMessage = mono_class_get_method_from_name(monoClass, "printMessage", 0);
+
+		mono_runtime_invoke(printMessage, object, nullptr, nullptr);
+
+		ARIA_CORE_INFO("Call Test.printCustomMessageInt(int value)");
+
+		MonoMethod* printCustomMessageInt = mono_class_get_method_from_name(monoClass, "printCustomMessageInt", 1);
+
+		int value = 5;
+
+		void* param = &value;
+
+		mono_runtime_invoke(printCustomMessageInt, object, &param, nullptr);
+
+		ARIA_CORE_INFO("Call Test.printCustomMessageString(string message)");
+
+		MonoMethod* printCustomMessageString = mono_class_get_method_from_name(monoClass, "printCustomMessageString", 1);
+
+		MonoString* message = mono_string_new(data->appDomain, "Hello world from C++.");
+
+		void* stringParam = message;
+		mono_runtime_invoke(printCustomMessageString, object, &stringParam, nullptr);
 	}
 }
