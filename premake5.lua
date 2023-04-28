@@ -285,7 +285,7 @@ project "ClassLibrary"
     --x64平台配置属性
     filter "platforms:x64"
         architecture "x64"      --指定架构为x64
-        targetdir ("bin/%{cfg.buildcfg}_%{cfg.platform}/")      --指定输出目录
+        targetdir ("./Assets/Scripts")      --指定输出目录
         objdir  ("obj/%{cfg.buildcfg}_%{cfg.platform}/")        --指定中间目录
 
     files 

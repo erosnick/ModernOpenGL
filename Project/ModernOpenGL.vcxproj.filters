@@ -133,6 +133,9 @@
     <ClInclude Include="..\src\Test\TestClearColor.h">
       <Filter>Test</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Test\TestMono.h">
+      <Filter>Test</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Test\TestTexture.h">
       <Filter>Test</Filter>
     </ClInclude>
@@ -258,6 +261,9 @@
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Test\TestClearColor.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Test\TestMono.cpp">
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Test\TestTexture.cpp">

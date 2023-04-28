@@ -30,7 +30,7 @@
     <DebugType>pdbonly</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug_x64\</OutputPath>
+    <OutputPath>..\Assets\Scripts\</OutputPath>
     <BaseIntermediateOutputPath>..\obj\Debug_x64\x64\Debug\ClassLibrary\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
     <DefineConstants>DEBUG;ARIA_DEBUG;ARIA_PLATFORM_WINDOWS</DefineConstants>
@@ -54,7 +54,7 @@
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release_x64\</OutputPath>
+    <OutputPath>..\Assets\Scripts\</OutputPath>
     <BaseIntermediateOutputPath>..\obj\Release_x64\x64\Release\ClassLibrary\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
     <DefineConstants>NDEBUG;ARIA_RELEASE;ARIA_PLATFORM_WINDOWS</DefineConstants>

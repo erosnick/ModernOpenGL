@@ -90,7 +90,7 @@ bool initGLFW()
 
 int main()
 {
-	monoWrapper = std::make_unique<MonoWrapper>("./ThirdParty/mono/lib", "MonoTest", "ClassLibrary.dll");
+	monoWrapper = std::make_unique<MonoWrapper>("./ThirdParty/mono/lib", "MonoTest", "Assets/Scripts/ClassLibrary.dll");
 	monoWrapper->createClass("ClassLibrary", "Component");
 
 	components = new Component[5];
