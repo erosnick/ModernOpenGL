@@ -94,11 +94,23 @@
     <Compile Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Include="..\src\Mono\Managed\IGame.cs">
       <Link>src\Mono\Managed\IGame.cs</Link>
     </Compile>
+    <Compile Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' " Include="..\src\Mono\Managed\InternalCalls.cs">
+      <Link>src\Mono\Managed\InternalCalls.cs</Link>
+    </Compile>
+    <Compile Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Include="..\src\Mono\Managed\InternalCalls.cs">
+      <Link>src\Mono\Managed\InternalCalls.cs</Link>
+    </Compile>
     <Compile Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' " Include="..\src\Mono\Managed\Main.cs">
       <Link>src\Mono\Managed\Main.cs</Link>
     </Compile>
     <Compile Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Include="..\src\Mono\Managed\Main.cs">
       <Link>src\Mono\Managed\Main.cs</Link>
+    </Compile>
+    <Compile Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' " Include="..\src\Mono\Managed\Test.cs">
+      <Link>src\Mono\Managed\Test.cs</Link>
+    </Compile>
+    <Compile Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Include="..\src\Mono\Managed\Test.cs">
+      <Link>src\Mono\Managed\Test.cs</Link>
     </Compile>
     <Compile Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' " Include="..\src\Mono\Managed\TestClass.cs">
       <Link>src\Mono\Managed\TestClass.cs</Link>
@@ -106,7 +118,6 @@
     <Compile Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' " Include="..\src\Mono\Managed\TestClass.cs">
       <Link>src\Mono\Managed\TestClass.cs</Link>
     </Compile>
-    <Compile Include="src\Mono\Managed\Test.cs" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

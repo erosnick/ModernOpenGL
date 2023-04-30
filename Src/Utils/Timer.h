@@ -4,7 +4,7 @@
 #include <string>
 #include <chrono>
 
-namespace Aria {
+namespace AriaCore {
 
 	class Timer
 	{

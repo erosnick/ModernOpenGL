@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace ClassLibrary
+namespace Aria
 {
     public class Component
     {

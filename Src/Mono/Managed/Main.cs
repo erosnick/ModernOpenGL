@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary
+namespace Aria
 {
     public static class Main
     {
