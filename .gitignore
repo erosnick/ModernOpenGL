@@ -47,3 +47,4 @@ Project/.vs/
 bin/
 obj/
 Thirdparty/imgui-1.89.2/bin
+Thirdparty/GLAD/bin-int
