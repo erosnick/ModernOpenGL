@@ -222,8 +222,8 @@
     <ClInclude Include="..\src\Renderer\VertexBufferLayout.h" />
     <ClInclude Include="..\src\Renderer\VertexBufferObject.h" />
     <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h" />
+    <ClInclude Include="..\src\Scripting\ScriptEngine.h" />
     <ClInclude Include="..\src\Scripting\ScriptGlue.h" />
-    <ClInclude Include="..\src\Scripting\ScriptingEngine.h" />
     <ClInclude Include="..\src\Test\Test.h" />
     <ClInclude Include="..\src\Test\TestClearColor.h" />
     <ClInclude Include="..\src\Test\TestMono.h" />
@@ -271,8 +271,8 @@
     <ClCompile Include="..\src\Renderer\VertexBufferLayout.cpp" />
     <ClCompile Include="..\src\Renderer\VertexBufferObject.cpp" />
     <ClCompile Include="..\src\Renderer\VertexBufferObjectIndexed.cpp" />
+    <ClCompile Include="..\src\Scripting\ScriptEngine.cpp" />
     <ClCompile Include="..\src\Scripting\ScriptGlue.cpp" />
-    <ClCompile Include="..\src\Scripting\ScriptingEngine.cpp" />
     <ClCompile Include="..\src\Test\Test.cpp" />
     <ClCompile Include="..\src\Test\TestClearColor.cpp" />
     <ClCompile Include="..\src\Test\TestMono.cpp" />

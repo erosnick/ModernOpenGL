@@ -124,10 +124,10 @@
     <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Scripting\ScriptGlue.h">
+    <ClInclude Include="..\src\Scripting\ScriptEngine.h">
       <Filter>Scripting</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Scripting\ScriptingEngine.h">
+    <ClInclude Include="..\src\Scripting\ScriptGlue.h">
       <Filter>Scripting</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Test\Test.h">
@@ -257,10 +257,10 @@
     <ClCompile Include="..\src\Renderer\VertexBufferObjectIndexed.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Scripting\ScriptGlue.cpp">
+    <ClCompile Include="..\src\Scripting\ScriptEngine.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Scripting\ScriptingEngine.cpp">
+    <ClCompile Include="..\src\Scripting\ScriptGlue.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Test\Test.cpp">

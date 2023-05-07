@@ -113,9 +113,6 @@
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
     </Manifest>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug_Win32\ClassLibrary.dll\ (xcopy /Q /E /Y /I ..\bin\Debug_Win32\ClassLibrary.dll $(SolutionDir) &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug_Win32\ClassLibrary.dll $(SolutionDir) &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -137,9 +134,6 @@
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
     </Manifest>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug_x64\ClassLibrary.dll\ (xcopy /Q /E /Y /I ..\bin\Debug_x64\ClassLibrary.dll $(SolutionDir) &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug_x64\ClassLibrary.dll $(SolutionDir) &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -165,9 +159,6 @@
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
     </Manifest>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release_Win32\ClassLibrary.dll\ (xcopy /Q /E /Y /I ..\bin\Release_Win32\ClassLibrary.dll $(SolutionDir) &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release_Win32\ClassLibrary.dll $(SolutionDir) &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -193,9 +184,6 @@
     <Manifest>
       <EnableDpiAwareness>true</EnableDpiAwareness>
     </Manifest>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release_x64\ClassLibrary.dll\ (xcopy /Q /E /Y /I ..\bin\Release_x64\ClassLibrary.dll $(SolutionDir) &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release_x64\ClassLibrary.dll $(SolutionDir) &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Mono\MonoWrapper.h" />

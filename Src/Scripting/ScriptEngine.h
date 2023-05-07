@@ -4,11 +4,11 @@
 
 namespace AriaCore
 {
-	class ScriptingEngine
+	class ScriptEngine
 	{
 	public:
-		ScriptingEngine() = default;
-		~ScriptingEngine() = default;
+		ScriptEngine() = default;
+		~ScriptEngine() = default;
 
 		static void init();
 		static void initMono();

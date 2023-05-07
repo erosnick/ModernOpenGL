@@ -3,7 +3,7 @@
 #include "Core/Core.h"
 #include "Core/Log.h"
 
-#include "ScriptingEngine.h"
+#include "ScriptEngine.h"
 
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
@@ -15,14 +15,14 @@
 
 namespace AriaCore
 {
-	struct ScriptingEngineData
+	struct ScriptEngineData
 	{
 		MonoAssembly* coreAssembly = nullptr;
 		MonoDomain* rootDomain = nullptr;
 		MonoDomain* appDomain = nullptr;
 	};
 	
-	static std::unique_ptr<ScriptingEngineData> data;
+	static std::unique_ptr<ScriptEngineData> data;
 
 	namespace Utils
 	{
@@ -98,14 +98,14 @@ namespace AriaCore
 		}
 	}
 	
-	void ScriptingEngine::init()
+	void ScriptEngine::init()
 	{
-		data = std::make_unique<ScriptingEngineData>();
+		data = std::make_unique<ScriptEngineData>();
 
 		initMono();
 	}
 	
-	void ScriptingEngine::initMono()
+	void ScriptEngine::initMono()
 	{
 		mono_set_assemblies_path("./ThirdParty/mono/lib");
 	
@@ -121,14 +121,14 @@ namespace AriaCore
 		}
 	}
 	
-	void ScriptingEngine::loadAssembly(const std::filesystem::path& path)
+	void ScriptEngine::loadAssembly(const std::filesystem::path& path)
 	{
-		data->coreAssembly = Utils::loadMonoAssembly("Assets/Scripts/ClassLibrary.dll");
+		data->coreAssembly = Utils::loadMonoAssembly("Assets/Scripts/AriaCore.dll");
 		ARIA_CORE_INFO("printAssemblyTypes");
 		Utils::printAssemblyTypes(data->coreAssembly);
 	}
 
-	void ScriptingEngine::shutdown()
+	void ScriptEngine::shutdown()
 	{
 		mono_jit_cleanup(data->rootDomain);
 	}
@@ -157,18 +157,18 @@ namespace AriaCore
 		*result = glm::cross(*parameter, glm::vec3(0.0f, 0.0f, -1.0f));
 	}
 
-	void ScriptingEngine::monoTest()
+	void ScriptEngine::monoTest()
 	{
 		ARIA_CORE_INFO("Mono test.");
 
-		data->coreAssembly = Utils::loadMonoAssembly("Assets/Scripts/ClassLibrary.dll");
+		data->coreAssembly = Utils::loadMonoAssembly("Assets/Scripts/AriaCore.dll");
 
 		ARIA_CORE_INFO("printAssemblyTypes");
 		Utils::printAssemblyTypes(data->coreAssembly);
 
 		MonoImage* image = mono_assembly_get_image(data->coreAssembly);
 
-		MonoClass* monoClass = mono_class_from_name(image, "ClassLibrary", "Test");
+		MonoClass* monoClass = mono_class_from_name(image, "AriaCore", "Test");
 		ARIA_CORE_ASSERT(monoClass);
 
 		MonoObject* object = mono_object_new(data->appDomain, monoClass);
@@ -180,10 +180,10 @@ namespace AriaCore
 
 		ARIA_CORE_INFO("Call Test.printMessage()");
 
-		mono_add_internal_call("ClassLibrary.Test::greetings", greetings);
-		mono_add_internal_call("ClassLibrary.Test::nativeLog", nativeLog);
-		mono_add_internal_call("ClassLibrary.Test::nativeLogVector3", nativeLogVector3);
-		mono_add_internal_call("ClassLibrary.Test::nativeLogVector3WithReturnValue", nativeLogVector3WithReturnValue);
+		mono_add_internal_call("AriaCore.Test::greetings", greetings);
+		mono_add_internal_call("AriaCore.Test::nativeLog", nativeLog);
+		mono_add_internal_call("AriaCore.Test::nativeLogVector3", nativeLogVector3);
+		mono_add_internal_call("AriaCore.Test::nativeLogVector3WithReturnValue", nativeLogVector3WithReturnValue);
 
 		MonoMethod* printMessage = mono_class_get_method_from_name(monoClass, "printMessage", 0);
 

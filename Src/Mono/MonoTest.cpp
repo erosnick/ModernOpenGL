@@ -24,26 +24,26 @@ std::unique_ptr<MonoWrapper> monoWrapper;
 
 bool initGLFW();
 
-int32_t CLassLibrary_Component_GetInternalId(const Component* component)
+int32_t AriaCore_Component_GetInternalId(const Component* component)
 {
 	return component->id;
 }
 
-int32_t CLassLibrary_Component_get_Tag(MonoObject* thisPtr)
+int32_t AriaCore_Component_get_Tag(MonoObject* thisPtr)
 {
 	Component* component;
 	mono_field_get_value(thisPtr, monoWrapper->getClassField("Component", "handle"), reinterpret_cast<void*>(&component));
 	return component->tag;
 }
 
-MonoArray* ClassLibrary_Component_GetComponents()
+MonoArray* AriaCore_Component_GetComponents()
 {
-	MonoArray* objectArray = monoWrapper->instantiateClassArray("ClassLibrary", "Component", numComponents);
+	MonoArray* objectArray = monoWrapper->instantiateClassArray("AriaCore", "Component", numComponents);
 
 	for (uint32_t i = 0; i < numComponents; i++)
 	{
 		// Allocate an instance of our class
-		MonoObject* object = monoWrapper->instantiateClass("ClassLibrary", "Component");
+		MonoObject* object = monoWrapper->instantiateClass("AriaCore", "Component");
 
 		void* nativeHandleValue = &components[i];
 
@@ -54,7 +54,7 @@ MonoArray* ClassLibrary_Component_GetComponents()
 	return objectArray;
 }
 
-void ClassLibrary_Game_InitGLFW()
+void AriaCore_Game_InitGLFW()
 {
 	initGLFW();
 }
@@ -90,8 +90,8 @@ bool initGLFW()
 
 int main()
 {
-	monoWrapper = std::make_unique<MonoWrapper>("./ThirdParty/mono/lib", "MonoTest", "Assets/Scripts/ClassLibrary.dll");
-	monoWrapper->createClass("ClassLibrary", "Component");
+	monoWrapper = std::make_unique<MonoWrapper>("./ThirdParty/mono/lib", "MonoTest", "Assets/Scripts/AriaCore.dll");
+	monoWrapper->createClass("AriaCore", "Component");
 
 	components = new Component[5];
 
@@ -101,18 +101,18 @@ int main()
 		components[i].tag = i * 4;
 	}
 
-	monoWrapper->registerMethod("ClassLibrary.Component::GetInternalId", reinterpret_cast<void*>(CLassLibrary_Component_GetInternalId));
-	monoWrapper->registerMethod("ClassLibrary.Component::get_Tag", reinterpret_cast<void*>(CLassLibrary_Component_get_Tag));
-	monoWrapper->registerMethod("ClassLibrary.Component::GetComponents", reinterpret_cast<void*>(ClassLibrary_Component_GetComponents));
+	monoWrapper->registerMethod("AriaCore.Component::GetInternalId", reinterpret_cast<void*>(AriaCore_Component_GetInternalId));
+	monoWrapper->registerMethod("AriaCore.Component::get_Tag", reinterpret_cast<void*>(AriaCore_Component_get_Tag));
+	monoWrapper->registerMethod("AriaCore.Component::GetComponents", reinterpret_cast<void*>(AriaCore_Component_GetComponents));
 
-	monoWrapper->createClass("ClassLibrary", "Main");
+	monoWrapper->createClass("AriaCore", "Main");
 
 	monoWrapper->invokeStaticMethod("Main", "TestComponent");
 
-	monoWrapper->createClass("ClassLibrary", "IGame");
-	monoWrapper->createClass("ClassLibrary", "GameMain");
+	monoWrapper->createClass("AriaCore", "IGame");
+	monoWrapper->createClass("AriaCore", "GameMain");
 
-	monoWrapper->registerMethod("ClassLibrary.Game::InitGLFW", reinterpret_cast<void*>(ClassLibrary_Game_InitGLFW));
+	monoWrapper->registerMethod("ClassLibrary.Game::InitGLFW", reinterpret_cast<void*>(AriaCore_Game_InitGLFW));
 
 	monoWrapper->invokeInstanceMethod("IGame", "Init");
 

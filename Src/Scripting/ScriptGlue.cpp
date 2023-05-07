@@ -75,8 +75,8 @@ namespace AriaCore
 
 	void ScriptGlue::registerFunctions()
 	{
-		mono_add_internal_call("ClassLibrary.Test::nativeLog", nativeLog);
-		mono_add_internal_call("ClassLibrary.Test::nativeLogVector3", nativeLogVector3);
-		mono_add_internal_call("ClassLibrary.Test::nativeLogVector3WithReturnValue", nativeLogVector3WithReturnValue);
+		mono_add_internal_call("AriaCore.Test::nativeLog", nativeLog);
+		mono_add_internal_call("AriaCore.Test::nativeLogVector3", nativeLogVector3);
+		mono_add_internal_call("AriaCore.Test::nativeLogVector3WithReturnValue", nativeLogVector3WithReturnValue);
 	}
 }
