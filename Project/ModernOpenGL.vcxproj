@@ -229,6 +229,7 @@
     <ClInclude Include="..\src\Test\TestMono.h" />
     <ClInclude Include="..\src\Test\TestTexture.h" />
     <ClInclude Include="..\src\Utils\Camera.h" />
+    <ClInclude Include="..\src\Utils\Error.h" />
     <ClInclude Include="..\src\Utils\GeometryGenerator.h" />
     <ClInclude Include="..\src\Utils\Random.h" />
     <ClInclude Include="..\src\Utils\Timer.h" />
@@ -277,6 +278,7 @@
     <ClCompile Include="..\src\Test\TestClearColor.cpp" />
     <ClCompile Include="..\src\Test\TestMono.cpp" />
     <ClCompile Include="..\src\Test\TestTexture.cpp" />
+    <ClCompile Include="..\src\Utils\Error.cpp" />
     <ClCompile Include="..\src\Utils\GeometryGenerator.cpp" />
     <ClCompile Include="..\src\Utils\Random.cpp" />
     <ClCompile Include="..\src\Utils\glDebug.cpp" />

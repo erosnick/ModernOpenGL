@@ -145,6 +145,9 @@
     <ClInclude Include="..\src\Utils\Camera.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Utils\Error.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Utils\GeometryGenerator.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -274,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="..\src\Test\TestTexture.cpp">
       <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utils\Error.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Utils\GeometryGenerator.cpp">
       <Filter>Utils</Filter>
