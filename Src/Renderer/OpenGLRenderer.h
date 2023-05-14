@@ -55,7 +55,8 @@ namespace AriaRenderer
 	{
 		Test,
 		DirectionalShadow,
-		PointShadow
+		PointShadow,
+		PathTracing
 	};
 	
 	class OpenGLRenderer
@@ -171,7 +172,7 @@ namespace AriaRenderer
 		Camera& getCamera() { return camera; }
 	
 	public:
-		ESceneSelection scene = ESceneSelection::DirectionalShadow;
+		ESceneSelection scene = ESceneSelection::PathTracing;
 	private:
 		const std::string FONT_BASE = "Assets/Fonts/";
 		const std::string SHADER_BASE = "Assets/Shaders/";
@@ -216,11 +217,9 @@ namespace AriaRenderer
 		glm::vec3 directionalShadowsLightPosition{ -2.0f, 4.0f, -1.0f };
 		glm::vec3 pointShadowsLightPosition{ 0.0f, 0.0f, 0.0f };
 	
-		std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
-	
 		// settings
-		int32 SCREEN_WIDTH = resolutions[0].x;
-		int32 SCREEN_HEIGHT = resolutions[0].y;
+		int32 SCREEN_WIDTH = 0;
+		int32 SCREEN_HEIGHT = 0;
 	
 		const int32 SHADOW_WIDTH = 2048;
 		const int32 SHADOW_HEIGHT = 2048;
@@ -250,7 +249,7 @@ namespace AriaRenderer
 		Texture skyboxDuskTexture;
 		Texture skyboxNightTexture;
 	
-		ComputeShader computeShader{ glm::uvec2(SCREEN_WIDTH, SCREEN_HEIGHT) };
+		ComputeShader computeShader;
 	
 		GLFWwindow* window;
 	

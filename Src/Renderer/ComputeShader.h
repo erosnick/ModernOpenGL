@@ -15,8 +15,10 @@ namespace AriaRenderer
 	class ComputeShader
 	{
 	public:
-		ComputeShader(const glm::uvec2& inWorkSize);
+		ComputeShader();
 		ComputeShader(const std::string& path);
+
+		void initialize(const glm::uvec2& inWorkSize, const glm::uvec2& inTextureSize);
 
 		void load(const std::string& path);
 
@@ -36,6 +38,7 @@ namespace AriaRenderer
 	private:
 		unsigned int ID;
 		glm::uvec2 workSize;
+		glm::uvec2 textureSize;
 
 		Texture computeTexture;
 	};

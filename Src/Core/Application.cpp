@@ -48,13 +48,20 @@ namespace AriaCore
 		glfwWindow = static_cast<GLFWwindow*>(window->GetNativeWindow());
 	
 		renderer.setGLFWWindow(glfwWindow);
+		renderer.setViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 		return true;
 	}
 	
 	bool Application::startup()
 	{
-		return init() && renderer.startup();
+		if (init())
+		{
+			renderer.startup();
+
+			return true;
+		}
+		return false;
 	}
 	
 	void Application::run()

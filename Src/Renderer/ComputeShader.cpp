@@ -6,14 +6,20 @@
 
 namespace AriaRenderer
 {
-	ComputeShader::ComputeShader(const glm::uvec2& inWorkSize)
-		: ID(), workSize{ inWorkSize }
+	ComputeShader::ComputeShader()
+		: ID(), workSize{}
 	{
 	}
 
 	ComputeShader::ComputeShader(const std::string& path)
 	{
 		load(path);
+	}
+
+	void ComputeShader::initialize(const glm::uvec2& inWorkSize, const glm::uvec2& inTextureSize)
+	{
+		workSize = inWorkSize;
+		textureSize = inTextureSize;
 	}
 
 	void ComputeShader::load(const std::string& path)
@@ -73,6 +79,7 @@ namespace AriaRenderer
 	void ComputeShader::dispatch()
 	{
 		// Just keep it simple, 2d work group
+		//glDispatchCompute(workSize.x, workSize.y, 1);
 		glDispatchCompute(workSize.x, workSize.y, 1);
 	}
 
@@ -83,7 +90,7 @@ namespace AriaRenderer
 
 	void ComputeShader::prepareComputeResources()
 	{
-		computeTexture.createImage(workSize.x, workSize.y);
+		computeTexture.createImage(textureSize.x, textureSize.y);
 	}
 
 	std::vector<float> ComputeShader::getComputeData()

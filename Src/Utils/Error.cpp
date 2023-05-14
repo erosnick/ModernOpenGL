@@ -1,3 +1,4 @@
+#include "AriaPCH.h"
 #include "Error.h"
 
 #include <cstdarg>

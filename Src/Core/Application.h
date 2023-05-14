@@ -49,14 +49,11 @@ namespace AriaCore
 
 		static float FrameTime;
 
-		std::vector<glm::ivec2> resolutions{ { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
+		std::vector<glm::ivec2> resolutions{ { 1280, 720 }, { 1280, 720 }, { 1920, 1080 }, { 2560, 1440 }, { 3840, 2160 } };
 
 		// settings
 		const int32 SCREEN_WIDTH = resolutions[0].x;
 		const int32 SCREEN_HEIGHT = resolutions[0].y;
-
-		const int32 SHADOW_WIDTH = 2048;
-		const int32 SHADOW_HEIGHT = 2048;
 
 		bool running = true;
 	};

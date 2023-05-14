@@ -168,7 +168,7 @@ namespace AriaCore
 
 		frameTime = static_cast<float>(elapsedSeconds);
 
-		if (elapsedSeconds >= 0.25)
+		if (elapsedSeconds >= 1.0)
 		{
 			previousSeconds = currentSeconds;
 			double fps = (double)frameCount / elapsedSeconds;
