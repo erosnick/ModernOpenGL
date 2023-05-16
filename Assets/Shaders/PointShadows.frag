@@ -20,6 +20,10 @@ layout(location = 8) uniform int isWireframe;
 layout(location = 9) uniform vec3 lightPosition;
 layout(location = 10) uniform vec3 viewPosition;
 
+float constant = 1.0;
+float linear = 0.09;
+float quadratic = 0.032;
+
 float ShadowCalculation(vec3 fragPosition)
 {
     // vec3 fragToLight = fragPosition - lightPosition;
@@ -93,6 +97,9 @@ void main()
     vec3 halfwayDirection = normalize(lightDirection + viewDirection);
     vec3 specular = pow(max(dot(normal, halfwayDirection), 0.0), 64.0) * lightColor;
 
+    float distance    = length(lightPosition - vsOut.fragPosition);
+    float attenuation = 1.0 / (constant + linear * distance + quadratic * (distance * distance));
+
     vec4 albedoColor = vec4(1.0);
     
     if (useTexture == 1)
@@ -105,7 +112,7 @@ void main()
 
     // shadow = 0.0;
     
-    vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * albedoColor.rgb;
+    vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular) * attenuation) * albedoColor.rgb;
     fragColor = vec4(vec3(lighting), 1.0);
     
     // fragColor = vec4(vec3(diffuse), 1.0);

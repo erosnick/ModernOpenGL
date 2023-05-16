@@ -172,7 +172,7 @@ namespace AriaRenderer
 		Camera& getCamera() { return camera; }
 	
 	public:
-		ESceneSelection scene = ESceneSelection::PathTracing;
+		ESceneSelection scene = ESceneSelection::DirectionalShadow;
 	private:
 		const std::string FONT_BASE = "Assets/Fonts/";
 		const std::string SHADER_BASE = "Assets/Shaders/";
