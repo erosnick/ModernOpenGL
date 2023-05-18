@@ -214,6 +214,7 @@
     <ClInclude Include="..\src\Renderer\Light.h" />
     <ClInclude Include="..\src\Renderer\Model.h" />
     <ClInclude Include="..\src\Renderer\OpenGLRenderer.h" />
+    <ClInclude Include="..\src\Renderer\PickingTexture.h" />
     <ClInclude Include="..\src\Renderer\RenderTexture.h" />
     <ClInclude Include="..\src\Renderer\Shader.h" />
     <ClInclude Include="..\src\Renderer\Texture.h" />
@@ -222,6 +223,7 @@
     <ClInclude Include="..\src\Renderer\VertexBufferLayout.h" />
     <ClInclude Include="..\src\Renderer\VertexBufferObject.h" />
     <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h" />
+    <ClInclude Include="..\src\Renderer\ogldev_types.h" />
     <ClInclude Include="..\src\Scripting\ScriptEngine.h" />
     <ClInclude Include="..\src\Scripting\ScriptGlue.h" />
     <ClInclude Include="..\src\Test\Test.h" />
@@ -266,6 +268,7 @@
     <ClCompile Include="..\src\Renderer\DepthTexture.cpp" />
     <ClCompile Include="..\src\Renderer\Model.cpp" />
     <ClCompile Include="..\src\Renderer\OpenGLRenderer.cpp" />
+    <ClCompile Include="..\src\Renderer\PickingTexture.cpp" />
     <ClCompile Include="..\src\Renderer\RenderTexture.cpp" />
     <ClCompile Include="..\src\Renderer\Texture.cpp" />
     <ClCompile Include="..\src\Renderer\VertexArrayObject.cpp" />

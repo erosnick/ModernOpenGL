@@ -100,6 +100,9 @@
     <ClInclude Include="..\src\Renderer\OpenGLRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Renderer\PickingTexture.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Renderer\RenderTexture.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -122,6 +125,9 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Renderer\VertexBufferObjectIndexed.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\ogldev_types.h">
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Scripting\ScriptEngine.h">
@@ -240,6 +246,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Renderer\OpenGLRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\PickingTexture.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Renderer\RenderTexture.cpp">
